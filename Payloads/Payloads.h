@@ -1,5 +1,10 @@
 #pragma once
 
+#include <stdio.h>
+#include <conio.h>
+#include <stdexcept>
+#include <ctime>
+
 namespace Payloads
 {
 	class Payloads
