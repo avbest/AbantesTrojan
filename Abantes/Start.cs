@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Abantes
 {
-    class Program
+    class Start
     {
+        [STAThread]
         static void Main(string[] args)
         {
+
         }
     }
 }
