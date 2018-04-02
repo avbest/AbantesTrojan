@@ -11,6 +11,7 @@ using System.Diagnostics;
 using Abantes.Properties;
 using Abantes.Payloads;
 using Abantes.Utils;
+using Microsoft.Win32.TaskScheduler;
 
 namespace Abantes
 {
