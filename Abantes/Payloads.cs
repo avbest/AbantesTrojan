@@ -4,9 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Abantes
+namespace Abantes.Payloads
 {
-    class Payloads
+    class Threads
     {
+
+    }
+    class Anoying
+    {
+
+    }
+    class Destructive
+    {
+
+    }
+    class WatchDogThreads
+    {
+
     }
 }
