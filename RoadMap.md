@@ -7,3 +7,4 @@
 - [x] MouseTrap Payload
 - [x] Random Keyboard Input Payload
 - [x] Random OS Sound Payload
+- [x] Screen Glitches Payload
