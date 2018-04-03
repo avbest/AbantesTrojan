@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Abantes.Utils
 {
@@ -161,6 +162,26 @@ namespace Abantes.Utils
             {
                 fsOut.Close();
                 fsCrypt.Close();
+            }
+        }
+    }
+    class Others
+    {
+        public static void StartProcess(string path, string args)
+        {
+            try
+            {
+                Process.Start(path, args);
+            }
+            catch { }
+        }
+        public static void KillProcess(string processName)
+        {
+            Process[] process;
+            process = Process.GetProcessesByName(processName);
+            foreach (Process processKill in process)
+            {
+                processKill.Kill();
             }
         }
     }
