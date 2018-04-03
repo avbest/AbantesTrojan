@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace Abantes.Utils
 {
@@ -20,11 +21,9 @@ namespace Abantes.Utils
         private const int SPI_SETDESKWALLPAPER = 20;
         private const int SPIF_SENDWININICHANGE = 2;
         private const int SPIF_UPDATEINIFILE = 1;
-
         private Wallpaper()
         {
         }
-
         public static void Set(Uri uri, Style style)
         {
             int num;
@@ -53,10 +52,8 @@ namespace Abantes.Utils
             }
             SystemParametersInfo(20, 0, filename, 3);
         }
-
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
-
         public enum Style
         {
             Tiled,
@@ -161,6 +158,26 @@ namespace Abantes.Utils
             {
                 fsOut.Close();
                 fsCrypt.Close();
+            }
+        }
+    }
+    class Others
+    {
+        public static void StartProcess(string path, string args)
+        {
+            try
+            {
+                Process.Start(path, args);
+            }
+            catch { }
+        }
+        public static void KillProcess(string processName)
+        {
+            Process[] process;
+            process = Process.GetProcessesByName(processName);
+            foreach (Process processKill in process)
+            {
+                processKill.Kill();
             }
         }
     }

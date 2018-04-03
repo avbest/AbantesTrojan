@@ -1,4 +1,8 @@
-# AbantesTrojan
+# Abantes
 A trojan made for fun.
 
-I am not responsible for any damage made using this trojan.
+The Creators are not responsible for any damage made using this trojan.
+
+Actions/Payloads:
+1. test
+2. test
