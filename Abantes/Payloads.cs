@@ -16,7 +16,6 @@ using Microsoft.Win32;
 
 namespace Abantes.Payloads
 {
-
     class Threads
     {
 

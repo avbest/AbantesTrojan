@@ -21,11 +21,9 @@ namespace Abantes.Utils
         private const int SPI_SETDESKWALLPAPER = 20;
         private const int SPIF_SENDWININICHANGE = 2;
         private const int SPIF_UPDATEINIFILE = 1;
-
         private Wallpaper()
         {
         }
-
         public static void Set(Uri uri, Style style)
         {
             int num;
@@ -54,10 +52,8 @@ namespace Abantes.Utils
             }
             SystemParametersInfo(20, 0, filename, 3);
         }
-
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern int SystemParametersInfo(int uAction, int uParam, string lpvParam, int fuWinIni);
-
         public enum Style
         {
             Tiled,
