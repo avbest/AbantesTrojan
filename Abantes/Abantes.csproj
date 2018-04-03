@@ -82,12 +82,16 @@
     </None>
     <EmbeddedResource Include="Resources\Action.bat" />
     <EmbeddedResource Include="Resources\LogonOverwrite.bat" />
+    <None Include="Resources\icon" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\creepy mouse.cur" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

