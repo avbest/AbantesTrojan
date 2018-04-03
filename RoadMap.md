@@ -14,4 +14,5 @@
 - [x] File Encryption Utility
 - [x] File Decryption Utility
 - [x] Wallpaper Change Utility
-- [ ] Screen Screw Payload
+- [x] Screen Screw Payload
+- [ ] Cursor Icon Payload

