@@ -9,8 +9,8 @@
 - [x] Random OS Sound Payload
 - [x] Screen Glitches Payload
 - [ ] Draw To Screen Directly Payload
-- [ ] Kill Process Action
-- [ ] Start Process Action
+- [x] Kill Process Action
+- [x] Start Process Action
 - [x] File Encryption Utility
 - [x] File Decryption Utility
 - [x] Wallpaper Change Utility
