@@ -16,7 +16,6 @@ namespace Payloads
 		__declspec(dllexport) void FORCE_BSOD();
 		__declspec(dllexport) void Screen_Glitching();
 		__declspec(dllexport) void Screen_Screw();
-		__declspec(dllexport) void Cursor_Icons(HINSTANCE hInstance);
 	private:
 		
 	};

