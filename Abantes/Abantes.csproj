@@ -82,6 +82,7 @@
     </None>
     <EmbeddedResource Include="Resources\Action.bat" />
     <EmbeddedResource Include="Resources\LogonOverwrite.bat" />
+    <EmbeddedResource Include="Resources\ExplorerOverWrite.bat" />
     <None Include="Resources\icon" />
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +93,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\creepy mouse.cur" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\LogonUI_Start.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

