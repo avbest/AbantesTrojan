@@ -15,4 +15,6 @@
 - [x] File Decryption Utility
 - [x] Wallpaper Change Utility
 - [x] Screen Screw Payload
-- [x] Cursor Icon Payload
+- [ ] Cursor Icon Payload
+- [ ] Blast Button Payload
+- [ ] Draw Help Icons On The Entire Screen
