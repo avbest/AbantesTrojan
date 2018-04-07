@@ -146,5 +146,25 @@ namespace Abantes.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Payloads {
+            get {
+                object obj = ResourceManager.GetObject("Payloads", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Rules {
+            get {
+                object obj = ResourceManager.GetObject("Rules", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

