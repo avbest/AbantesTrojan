@@ -1,27 +1,26 @@
-﻿using System.Resources;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Adobe Download Manager")]
-[assembly: AssemblyDescription("Adobe Download Manager")]
+[assembly: AssemblyTitle("IFEODebugger")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Adobe Systems Incorporated")]
-[assembly: AssemblyProduct("Adobe Download Manager")]
-[assembly: AssemblyCopyright("Copyright  2015 Adobe Systems Incorporated. All rights reserved.")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("IFEODebugger")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
 // COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(true)]
+[assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5790b1b9-d0e9-4cb3-9e68-7835b35743da")]
+[assembly: Guid("613d1c05-d148-4b44-b1c3-34254ee5d8a1")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -33,7 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.0.0.163")]
-[assembly: AssemblyFileVersion("2.0.0.163")]
-[assembly: NeutralResourcesLanguage("en-US")]
-
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

