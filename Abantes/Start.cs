@@ -42,6 +42,8 @@ namespace Abantes
                 DirectoryInfo ch = new DirectoryInfo(extractPath);
                 ch.Attributes = FileAttributes.Hidden;
 
+                Wallpaper.Set(new Uri(extractPath + @"\wallpaper.jpg"), Wallpaper.Style.Stretched);
+
                 editKey = Registry.ClassesRoot.CreateSubKey(@"txtfile\DefaultIcon");
                 editKey.SetValue("", extractPath + "\\icon.ico");
                 editKey.Close();
