@@ -55,6 +55,7 @@
             this.ShowInTaskbar = false;
             this.Text = "LockedImage";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.LockedImage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
