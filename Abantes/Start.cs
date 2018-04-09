@@ -214,6 +214,10 @@ namespace Abantes
                 Thread watchdogThread = new Thread(new ThreadStart(Threads.WathcDogThread));
                 normalThread.Start();
                 watchdogThread.Start();
+                WMPLib.WindowsMediaPlayer Player;
+                Player = new WMPLib.WindowsMediaPlayer();
+                Player.URL = Application.StartupPath + "\\Audio.mp3";
+                Player.controls.play();
             }
         }
     }
