@@ -6,6 +6,7 @@ Please don't use this virus to troll your friends because it will make their PC 
 ###### Plugins
 * [Fody](https://github.com/Fody/Fody)
 * [Costura.fody](https://github.com/Fody/Costura)
+* [Task Scheduler](https://github.com/dahall/TaskScheduler)
 ###### Software
 * [NASM](http://nasm.us)
 * [Resource Hacker](http://www.angusj.com/resourcehacker/)
