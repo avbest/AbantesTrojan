@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Adobe Download Manager")]
-[assembly: AssemblyDescription("Adobe Download Manager")]
+[assembly: AssemblyTitle("Abantes")]
+[assembly: AssemblyDescription("Abantes Trojan")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Adobe Systems Incorporated")]
-[assembly: AssemblyProduct("Adobe Download Manager")]
-[assembly: AssemblyCopyright("Copyright  2015 Adobe Systems Incorporated. All rights reserved.")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Abantes")]
+[assembly: AssemblyCopyright("Copyright  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
