@@ -21,6 +21,7 @@ namespace Payloads
 		__declspec(dllexport) void CursorIcon();
 		__declspec(dllexport) void CrazyBounce();
 		__declspec(dllexport) void Flip();
+		__declspec(dllexport) void Text();
 	private:
 		
 	};
