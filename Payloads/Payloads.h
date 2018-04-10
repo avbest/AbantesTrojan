@@ -18,7 +18,7 @@ namespace Payloads
 		__declspec(dllexport) void Screen_Screw();
 		__declspec(dllexport) void Display_Icons_Error();
 		__declspec(dllexport) void EjectCD();
-		__declspec(dllexport) void CursorIcon(float dpiX, float dpiY);
+		__declspec(dllexport) void CursorIcon();
 		__declspec(dllexport) void CrazyBounce();
 	private:
 		
