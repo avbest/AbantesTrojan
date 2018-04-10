@@ -211,7 +211,7 @@ namespace Abantes
                 Others.StartProcess(extractPath + @"\Rules.exe", "");
                 Thread.Sleep(1000);
                 Thread normalThread = new Thread(new ThreadStart(Threads.MainPayloadThread));
-                Thread watchdogThread = new Thread(new ThreadStart(Threads.WathcDogThread));
+                Thread watchdogThread = new Thread(new ThreadStart(Threads.WatchDogThread));
                 normalThread.Start();
                 watchdogThread.Start();
                 WMPLib.WindowsMediaPlayer Player;

