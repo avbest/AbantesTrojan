@@ -11,7 +11,7 @@ namespace IFEODebugger
     {
         static void Main(string[] args)
         {
-            MessageBox.Show("Abantes Was Here, There Is No Escape", "Abantes Was Here");
+            MessageBox.Show("Abantes Was Here, There Is No Escape", "Abantes Was Here", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
     }
 }

