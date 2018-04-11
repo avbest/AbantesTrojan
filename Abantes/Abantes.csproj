@@ -172,10 +172,10 @@
     <EmbeddedResource Include="Resources\Cursor_Follow.exe" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Payloads.dll" />
+    <None Include="Resources\LogonUI_Start.exe" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\LogonUI_Start.exe" />
+    <EmbeddedResource Include="Resources\Payloads.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
