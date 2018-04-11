@@ -116,16 +116,6 @@ namespace Abantes.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Cursor_Follow {
-            get {
-                object obj = ResourceManager.GetObject("Cursor_Follow", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] explorer_exe {
             get {
                 object obj = ResourceManager.GetObject("explorer_exe", resourceCulture);

@@ -154,9 +154,6 @@
   <data name="authui_dll" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\authui.dll.mui;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="Cursor_Follow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cursor_Follow.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="explorer_exe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\explorer.exe.mui;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

