@@ -113,9 +113,6 @@
     <EmbeddedResource Include="Resources\creepy mouse.cur" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\LogonUI_Start.exe" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\IFEODebugger.exe" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Payloads.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LogonUI_Start.exe" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
