@@ -10,6 +10,9 @@ Please don't use this virus to troll your friends because it will make their PC 
 ###### Software
 * [NASM](http://nasm.us)
 * [Resource Hacker](http://www.angusj.com/resourcehacker/)
+### Debug Mode
+Abantes has it's own debug system in place, just add a string `Debug` with a value of `1` to
+`HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Abantes`
 ### Coded In:
 * C#
 * C++
