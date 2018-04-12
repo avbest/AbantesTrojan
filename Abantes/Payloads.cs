@@ -89,7 +89,7 @@ namespace Abantes.Payloads
                         text.Start();
                         break;
                 }
-                Thread.Sleep(8000);
+                Thread.Sleep(10000);
             }
         }
         public static void WatchDogThread()

