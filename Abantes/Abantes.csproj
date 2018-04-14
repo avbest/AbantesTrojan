@@ -137,9 +137,6 @@
     <EmbeddedResource Include="Resources\Rules.exe" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\DARK-evil-horror-spooky-creepy-wallpaper.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\wallpaper.jpg" />
   </ItemGroup>
   <ItemGroup>

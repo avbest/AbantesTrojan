@@ -136,5 +136,17 @@ namespace Abantes
             Thread EO = new Thread(new ThreadStart(Destructive.ExplorerOverwrite));
             EO.Start();
         }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            Thread CAT = new Thread(new ThreadStart(Annoying.ChangeAllText));
+            CAT.Start();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            Thread CWT = new Thread(new ThreadStart(Annoying.ChangeWindowText));
+            CWT.Start();
+        }
     }
 }

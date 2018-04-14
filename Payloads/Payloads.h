@@ -22,6 +22,7 @@ namespace Payloads
 		__declspec(dllexport) void CrazyBounce();
 		__declspec(dllexport) void Flip();
 		__declspec(dllexport) void Text();
+		__declspec(dllexport) int ChangeAllText();
 	private:
 		
 	};

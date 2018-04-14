@@ -46,6 +46,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -190,7 +192,7 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(13, 308);
+            this.button15.Location = new System.Drawing.Point(13, 344);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(402, 40);
             this.button15.TabIndex = 14;
@@ -201,7 +203,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(61, 351);
+            this.label1.Location = new System.Drawing.Point(62, 387);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(293, 13);
             this.label1.TabIndex = 15;
@@ -227,11 +229,33 @@
             this.button17.UseVisualStyleBackColor = true;
             this.button17.Click += new System.EventHandler(this.button17_Click);
             // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(13, 308);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(200, 30);
+            this.button18.TabIndex = 18;
+            this.button18.Text = "Change All Text";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(215, 308);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(200, 30);
+            this.button19.TabIndex = 19;
+            this.button19.Text = "Change Title Text";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
             // PayloadDebugger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(423, 374);
+            this.ClientSize = new System.Drawing.Size(423, 408);
+            this.Controls.Add(this.button19);
+            this.Controls.Add(this.button18);
             this.Controls.Add(this.button17);
             this.Controls.Add(this.button16);
             this.Controls.Add(this.label1);
@@ -284,5 +308,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button19;
     }
 }
