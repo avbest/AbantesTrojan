@@ -1,0 +1,2 @@
+NASM Command:
+nasm -f bin data.asm -o data.bin

@@ -157,8 +157,8 @@
     <EmbeddedResource Include="Resources\Cursor_Follow.exe" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\data.bin" />
-    <None Include="Resources\LogonUI_Start.exe" />
+    <EmbeddedResource Include="Resources\data.bin" />
+    <EmbeddedResource Include="Resources\LogonUI_Start.exe" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Payloads.dll" />
