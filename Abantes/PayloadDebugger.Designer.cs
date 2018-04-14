@@ -44,6 +44,8 @@
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button17 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -188,9 +190,9 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(13, 272);
+            this.button15.Location = new System.Drawing.Point(13, 308);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(400, 40);
+            this.button15.Size = new System.Drawing.Size(402, 40);
             this.button15.TabIndex = 14;
             this.button15.Text = "Kill PC";
             this.button15.UseVisualStyleBackColor = true;
@@ -199,17 +201,39 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 315);
+            this.label1.Location = new System.Drawing.Point(61, 351);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(293, 13);
             this.label1.TabIndex = 15;
             this.label1.Text = "These payloads are started as threads, so they may not stop.";
             // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(13, 272);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(200, 30);
+            this.button16.TabIndex = 16;
+            this.button16.Text = "Userinit Overwrite";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(215, 272);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(200, 30);
+            this.button17.TabIndex = 17;
+            this.button17.Text = "Explorer Overwrite";
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
             // PayloadDebugger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(423, 345);
+            this.ClientSize = new System.Drawing.Size(423, 374);
+            this.Controls.Add(this.button17);
+            this.Controls.Add(this.button16);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.button14);
@@ -258,5 +282,7 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button17;
     }
 }

