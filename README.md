@@ -13,7 +13,7 @@ Please don't use this virus to troll your friends because it will make their PC 
 ### Debug Mode
 Abantes has it's own debug system in place, just add a string `Debug` with a value of `1` to
 `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Abantes`
-### Payloads
+### Payloads (23)
 * Infecting Image File Execution Options
 * Schedule its launch in Task Scheduler
 * Hide all drives
