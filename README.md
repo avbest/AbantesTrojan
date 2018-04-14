@@ -21,12 +21,12 @@ Abantes has it's own debug system in place, just add a string `Debug` with a val
 * Infect Winlogon (Userinit and Explorer Shell)
 * Change context menu text and start menu text
 * Change window titles
-* Change button text window text and other string for some windows
+* Change button text window text and other strings for some windows
 * Draw question icons to screen
 * Process and file watch dog
 * MBR overwrite
 * Logon UI overwrite
-* Encrypt user files with extension .Abantes
+* Encrypts user files with extension .Abantes
 * Flip screen
 * Draw black and red text to screen
 * change the screen and re-draw it disorientated in a new location (hard to explain)
