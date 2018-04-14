@@ -13,6 +13,30 @@ Please don't use this virus to troll your friends because it will make their PC 
 ### Debug Mode
 Abantes has it's own debug system in place, just add a string `Debug` with a value of `1` to
 `HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Abantes`
+### Payloads
+* Infecting Image File Execution Options
+* Schedule its launch in Task Scheduler
+* Hide all drives
+* Disallow access to all drives
+* Infect Winlogon (Userinit and Explorer Shell)
+* Change context menu text and start menu text
+* Change window titles
+* Change button text window text and other string for some windows
+* Draw question icons to screen
+* Process and file watch dog
+* MBR overwrite
+* Logon UI overwrite
+* Encrypt user files with extension .Abantes
+* Flip screen
+* Draw black and red text to screen
+* change the screen and re-draw it disorientated in a new location (hard to explain)
+* Eject CD
+* draw the screen inverted slowly, sliding effect
+* re-draw the screen with merged colours
+* Force BSOD (kill all processes or NTRAISEHARDERROR)
+* Trap the mouse
+* Random keyboard input
+* Random OS Sounds
 ### Coded In:
 * C#
 * C++
