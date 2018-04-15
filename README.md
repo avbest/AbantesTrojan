@@ -37,6 +37,7 @@ Abantes has it's own debug system in place, just add a string `Debug` with a val
 * Trap the mouse
 * Random keyboard input
 * Random OS Sounds
+* Delete as much of the Windows Registry as it can
 ### Coded In:
 * C#
 * C++
