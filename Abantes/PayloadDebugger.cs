@@ -139,7 +139,7 @@ namespace Abantes
 
         private void button18_Click(object sender, EventArgs e)
         {
-            Thread CAT = new Thread(new ThreadStart(Annoying.ChangeAllText));
+            Thread CAT = new Thread(new ThreadStart(Annoying.ChangeText));
             CAT.Start();
         }
 
