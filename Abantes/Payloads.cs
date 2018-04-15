@@ -88,7 +88,7 @@ namespace Abantes.Payloads
         {
             while (true)
             {
-                if (_random.Next(100) > 80)
+                if (_random.Next(100) > 70)
                 {
                     switch (_random.Next(5))
                     {
