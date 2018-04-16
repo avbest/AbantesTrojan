@@ -120,7 +120,7 @@
     <EmbeddedResource Include="Resources\icon" />
     <EmbeddedResource Include="Resources\explorer.exe.mui" />
     <EmbeddedResource Include="Resources\authui.dll.mui" />
-    <EmbeddedResource Include="Resources\data.bin" />
+    <None Include="Resources\data.bin" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
