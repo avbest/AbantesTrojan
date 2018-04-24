@@ -39,17 +39,17 @@ namespace Abantes
             }
             if (operatingSystem == "10")
             {
-                MessageBox.Show("This Virus Dosen't Work On Windows 10", "Error", 0, MessageBoxIcon.Error);
+                MessageBox.Show("This Virus Dosen't Work On Windows 10" + "\n" + "Please Use Windows 7 To Test This Virus", "Error", 0, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
             else if (operatingSystem == "8")
             {
-                MessageBox.Show("This Virus Dosen't Work On Windows 8.x", "Error", 0, MessageBoxIcon.Error);
+                MessageBox.Show("This Virus Dosen't Work On Windows 8 or 8.x" + "\n" + "Please Use Windows 7 To Test This Virus", "Error", 0, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
             else if (operatingSystem == "8.1")
             {
-                MessageBox.Show("This Virus Dosen't Work On Windows 8.x", "Error", 0, MessageBoxIcon.Error);
+                MessageBox.Show("This Virus Dosen't Work On Windows 8 or 8.x" + "\n" + "Please Use Windows 7 To Test This Virus", "Error", 0, MessageBoxIcon.Error);
                 Environment.Exit(0);
             }
 
