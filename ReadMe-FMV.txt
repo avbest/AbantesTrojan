@@ -3,7 +3,7 @@
    / _ \   | '_ \   / _` | | '_ \  | __|  / _ \ / __|
   / ___ \  | |_) | | (_| | | | | | | |_  |  __/ \__ \
  /_/   \_\ |_.__/   \__,_| |_| |_|  \__|  \___| |___/
-!!!! NOT COMPATIBLE WITH WINDOWS 10, WINDOWS 8 AND WINDOWS 8.1 !!!!
+!!!! NOT COMPATIBLE WITH WINDOWS 10, WINDOWS 8.x !!!!
 !!!! Install Required Frameworks Included In The Folder!!!!
 
 Created By: ElektroKill and Chris
